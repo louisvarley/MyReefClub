@@ -1,0 +1,12 @@
+{
+    "autoload": {
+        "psr-4": {
+            "myReef\\services\\": "services",
+            "myReef\\controllers\\": "controllers",     
+            "myReef\\views\\": "views",
+            "myReef\\classes\\": "classes",      
+            "myReef\\app\\": "classes",             
+            "myReef\\models\\": "models"                                        
+        }
+    }
+}
