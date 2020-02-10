@@ -4,6 +4,23 @@ namespace myReef\views;
 
 class addListing extends \myReef\views\main{
 	
+	function inlineJS(){
+
+		?>
+		jQuery( document ).ready(function() {
+			$('#filer_input').filer({
+				limit: 3,
+				maxSize: 3,
+				extensions: ['jpg', 'jpeg', 'png', 'gif'],
+				changeInput: true,
+				showThumbs: true,
+				addMore: true
+			});
+		});
+		<?php
+	
+	}
+	
 	function content(){
 		
 		?>	
@@ -19,11 +36,11 @@ class addListing extends \myReef\views\main{
 				</div>
 				<div class="row">
 					<div class="col-lg-12 col-lg-12">
-						<form class="form-horizontal">
+						<form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
 							<fieldset>
 
 							<!-- Form Name -->
-							<legend>Form Name</legend>
+							<legend>New Listing</legend>
 
 							<!-- Text input-->
 							<div class="form-group">
@@ -100,6 +117,17 @@ class addListing extends \myReef\views\main{
 							  </div>
 							</div>
 
+							<!-- Password input-->
+							<div class="form-group">
+							  <label class="col-lg-12 control-label" for="passwordinput">Images</label>
+							  <div class="col-lg-12">
+								<input type="file" name="files[]" id="filer_input" multiple="multiple">
+								<span class="help-block">Upload up to 3 images to your listing</span>
+							  </div>
+							</div>
+
+							
+
 							<!-- Button (Double) -->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="button1id"></label>
@@ -110,7 +138,7 @@ class addListing extends \myReef\views\main{
 							</div>
 
 							</fieldset>
-						</form>
+
 					</div>
 				</div>
 			</div>

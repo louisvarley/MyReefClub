@@ -5,9 +5,7 @@ namespace myReef\views;
 class main{
 	
 	
-	function beforeLoad(){
-		
-	}
+	function beforeLoad(){}
 	
 	function header(){
 		?>
@@ -30,6 +28,9 @@ class main{
 		  <!-- CUSTOM CSS -->
 		  <link href="<?php echo _CSS ?>style.css" rel="stylesheet">
 
+		  <!-- jQuery Filer -->
+		  <link href="<?php echo _LIBS ?>jQuery.filer/css/jquery.filer.css" rel="stylesheet">
+		  
 		  <!-- FAVICON -->
 		  <link href="<?php echo _IMAGES ?>favicon.png" rel="shortcut icon">
 
@@ -51,9 +52,13 @@ class main{
 		  <script src="<?php echo _LIBS; ?>jquery-nice-select/js/jquery.nice-select.min.js"></script>
 		  <script src="<?php echo _LIBS; ?>fancybox/jquery.fancybox.pack.js"></script>
 		  <script src="<?php echo _LIBS; ?>smoothscroll/SmoothScroll.min.js"></script>
+		  
+		  <script src="<?php echo _LIBS; ?>jQuery.filer/js/jquery.filer.min.js"></script>		  
 		  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
 	  
+		<?php if(method_exists($this,'inlineJS')){ ?><script><?php $this->inlineJS(); ?></script><?php } ?>
+		<?php if(method_exists($this,'inlineCSS')){ ?><script><?php $this->inlineCSS(); ?></script><?php } ?>
 		  
 		</head>
 
