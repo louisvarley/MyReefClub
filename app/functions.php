@@ -1,16 +1,80 @@
 <?php
 
-function dashesToCamelCase($string, $capitalizeFirstCharacter = false) 
+/* Dashed String to Camel Case */
+function dashesToCamelCase($string) 
 {
-
-    $str = str_replace(' ', '', ucwords(str_replace('-', ' ', $string)));
-
-    if (!$capitalizeFirstCharacter) {
-        $str[0] = strtolower($str[0]);
-    }
-
+    $str = lcfirst(str_replace(' ', '', ucwords(str_replace('-', ' ', $string))));
+	
     return $str;
 }
 
+/* Redirect */
+function redirect($url)
+{
+	$url = "/" . ltrim($url,"/");
+	header("Location: $url");
+}
+
+/* URL Parts */
+function parts()
+{
+	return explode('/',$_SERVER['REQUEST_URI']);
+}
+
+function getClientIP()
+{
+    if(!empty($_SERVER['HTTP_CLIENT_IP'])){
+        //ip from share internet
+        $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }elseif(!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+        //ip pass from proxy
+        $ip = $_SERVER['HTTP_X_FORWARDED_FOR'];
+    }else{
+        $ip = $_SERVER['REMOTE_ADDR'];
+    }
+    return $ip;
+}
+
+/* Unique Nonce tied to the date and IP Address to semi-secure AJAX calls */
+function getNonce()
+{
+	
+	$str = date("Y-m-d") . getClientIP();
+	$nonce = md5($str);		
+	return $nonce;
+	
+}
+
+/* Generate a Random GUID */
+function guid()
+{
+    if (function_exists('com_create_guid') === true)
+    {
+        return trim(com_create_guid(), '{}');
+    }
+
+    return sprintf('%04X%04X-%04X-%04X-%04X-%04X%04X%04X', mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(16384, 20479), mt_rand(32768, 49151), mt_rand(0, 65535), mt_rand(0, 65535), mt_rand(0, 65535));
+}
+
+/* Generate a Random Salt */
+function salt(){
+	
+	 $charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/\\][{}\'";:?.>,<!@#$%^&*()-_=+|';
+     $randString = "";
+     $randStringLen = 64;
+
+     while(strlen($randString) < $randStringLen) {
+         $randChar = substr(str_shuffle($charset), mt_rand(0, strlen($charset)), 1);
+         $randString .= $randChar;
+     }
+
+     return $randString;
+}
+
+function e($str){
+	
+	echo htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+	
+}
 
 ?>

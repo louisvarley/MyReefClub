@@ -2,7 +2,7 @@
 
 namespace myReef\controllers;
 
-class main{
+class controller{
 	
 	
 	

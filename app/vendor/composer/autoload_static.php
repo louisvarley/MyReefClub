@@ -46,15 +46,28 @@ class ComposerStaticInit32fcc238ffafd6e70c457a24144561ed
     );
 
     public static $classMap = array (
+        'myReef\\classes\\ajax' => __DIR__ . '/../..' . '/classes/ajax.php',
+        'myReef\\classes\\imageUploader' => __DIR__ . '/../..' . '/classes/imageUploader.php',
         'myReef\\classes\\page' => __DIR__ . '/../..' . '/classes/page.php',
+        'myReef\\classes\\uploader' => __DIR__ . '/../..' . '/classes/uploader.php',
         'myReef\\controllers\\addListing' => __DIR__ . '/../..' . '/controllers/add-listing.php',
+        'myReef\\controllers\\ajax' => __DIR__ . '/../..' . '/controllers/ajax.php',
+        'myReef\\controllers\\controller' => __DIR__ . '/../..' . '/controllers/controller.php',
         'myReef\\controllers\\faq' => __DIR__ . '/../..' . '/controllers/faq.php',
-        'myReef\\controllers\\main' => __DIR__ . '/../..' . '/controllers/main.php',
+        'myReef\\controllers\\listing' => __DIR__ . '/../..' . '/controllers/listing.php',
+        'myReef\\controllers\\listingNotFound' => __DIR__ . '/../..' . '/controllers/listing-not-found.php',
+        'myReef\\controllers\\pageNotFound' => __DIR__ . '/../..' . '/controllers/page-not-found.php',
         'myReef\\controllers\\root' => __DIR__ . '/../..' . '/controllers/root.php',
+        'myReef\\models\\ajaxResponse' => __DIR__ . '/../..' . '/models/ajax-response.php',
+        'myReef\\models\\listing' => __DIR__ . '/../..' . '/models/listing.php',
+        'myReef\\models\\model' => __DIR__ . '/../..' . '/models/model.php',
         'myReef\\views\\addListing' => __DIR__ . '/../..' . '/views/add-listing.php',
         'myReef\\views\\faq' => __DIR__ . '/../..' . '/views/faq.php',
-        'myReef\\views\\main' => __DIR__ . '/../..' . '/views/main.php',
+        'myReef\\views\\listing' => __DIR__ . '/../..' . '/views/listing.php',
+        'myReef\\views\\listingNotFound' => __DIR__ . '/../..' . '/views/listing-not-found.php',
+        'myReef\\views\\pageNotFound' => __DIR__ . '/../..' . '/views/page-not-found.php',
         'myReef\\views\\root' => __DIR__ . '/../..' . '/views/root.php',
+        'myReef\\views\\view' => __DIR__ . '/../..' . '/views/view.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

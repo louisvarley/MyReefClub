@@ -1,5 +1,9 @@
 <?php
 
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 /* Defines */
 include('app/defines.php');
 
@@ -15,25 +19,6 @@ $page = new myReef\classes\page();
 
 
 ?>
-
-
-
-
-<!--===============================
-=            Hero Area            =
-================================-->
-
-
-
-<!--===================================
-=            Client Slider            =
-====================================-->
-
-
-<!--===========================================
-=            Popular deals section            =
-============================================-->
-
 
 
 

@@ -2,7 +2,7 @@
 
 namespace myReef\views;
 
-class root extends \myReef\views\main{
+class root extends \myReef\views\view{
 	
 	function content(){
 		

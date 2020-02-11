@@ -2,7 +2,7 @@
 
 namespace myReef\controllers;
 
-class root extends \myReef\controllers\main{
+class root extends \myReef\controllers\controller{
 	
 	
 	

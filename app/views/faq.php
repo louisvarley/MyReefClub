@@ -2,7 +2,7 @@
 
 namespace myReef\views;
 
-class faq extends \myReef\views\main{
+class faq extends \myReef\views\view{
 	
 	function content(){
 		

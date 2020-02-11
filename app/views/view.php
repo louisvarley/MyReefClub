@@ -2,7 +2,7 @@
 
 namespace myReef\views;
 
-class main{
+class view{
 	
 	
 	function beforeLoad(){}
@@ -52,7 +52,6 @@ class main{
 		  <script src="<?php echo _LIBS; ?>jquery-nice-select/js/jquery.nice-select.min.js"></script>
 		  <script src="<?php echo _LIBS; ?>fancybox/jquery.fancybox.pack.js"></script>
 		  <script src="<?php echo _LIBS; ?>smoothscroll/SmoothScroll.min.js"></script>
-		  
 		  <script src="<?php echo _LIBS; ?>jQuery.filer/js/jquery.filer.min.js"></script>		  
 		  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
@@ -78,13 +77,13 @@ class main{
 							<div class="collapse navbar-collapse" id="navbarSupportedContent">
 								<ul class="navbar-nav ml-auto main-nav ">
 									<li class="nav-item active">
-										<a href="/" class="nav-link" href="index.html">Home</a>
+										<a href="/" class="nav-link" >Home</a>
 									</li>								
 									<li class="nav-item active">
 										<a class="nav-link" href="index.html">Browse Listings</a>
 									</li>
 									<li class="nav-item">
-										<a class="nav-link" href="faq">FAQ</a>
+										<a class="nav-link" href="/faq">FAQ</a>
 									</li>									
 									<li class="nav-item">
 										<a class="nav-link" href="dashboard.html">Contact</a>
@@ -92,7 +91,7 @@ class main{
 								</ul>
 								<ul class="navbar-nav ml-auto mt-10">
 									<li class="nav-item">
-										<a href="add-listing" class="nav-link add-button" href="#"><i class="fas fa-plus-square"></i> Add Listing</a>
+										<a href="/add-listing" class="nav-link add-button" href="#"><i class="fas fa-plus-square"></i> Add Listing</a>
 									</li>
 								</ul>
 							</div>

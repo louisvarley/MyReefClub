@@ -2,7 +2,7 @@
 
 namespace myReef\controllers;
 
-class faq extends \myReef\controllers\main{
+class faq extends \myReef\controllers\controller{
 	
 	
 	
