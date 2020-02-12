@@ -38,13 +38,15 @@ class page{
 		if($this->hasController) $this->load();
 		if($this->hasView) $this->render();
 		
-	
 		if(!$this->hasView && !$this->hasController) redirect('page-not-found');
 		
 	}
 	
 	function load(){
 		
+		$this->controller->view->meta = new \myReef\classes\metaProperties();
+		
+		if(method_exists($this->controller,'login')) $this->controller->login();
 		if(method_exists($this->controller,'nonce')) $this->controller->nonce();		
 		if(method_exists($this->controller,'init')) $this->controller->init();
 		if(method_exists($this->controller,'post') && !empty($_POST)) $this->controller->post();

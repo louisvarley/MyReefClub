@@ -1,4 +1,5 @@
 <?php
+define('_DEFAULT_TITLE','MyReef Club | Sales and Swap Listings');
 
 define('_URL_ROOT','/');
 define('_PATH_ROOT',$_SERVER['DOCUMENT_ROOT'] . '/');

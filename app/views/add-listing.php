@@ -7,6 +7,23 @@ class addListing extends \myReef\views\view{
 	function inlineJS(){
 
 		?>
+		
+		var checkLength = function (){
+				
+			if(jQuery('#summary').val().length > 120) jQuery('#summary').val(jQuery('#summary').val().substring(0, jQuery('#summary').val().length - 1))
+			x = 120 - jQuery('#summary').val().length;
+			jQuery('#summary-count').html(x + " remaining");
+		}
+		
+		jQuery( document ).ready(function(){
+			
+			jQuery('#summary').bind('input propertychange', function() {
+				checkLength();
+			});
+			
+			checkLength();
+		});
+		
 		jQuery( document ).ready(function(){
 			
 			var imageUploads = [];
@@ -63,54 +80,97 @@ class addListing extends \myReef\views\view{
 				uploadFile: filer_default_opts.uploadFile				
 			});
 		});
+		
+
+
+
 		<?php
 	
 	}
 	
-	function content(){
+	function isEdit(){
 		
+		return $this->mode == "edit" ? true : false;
+		
+	}
+	
+	
+	function content(){
+	
 		?>	
 		<section class="popular-deals section bg-gray">
 			<div class="container">
 				<div class="row">
 					<div class="col-lg-12">
 						<div class="section-title">
-							<h2>Add a New Listings</h2>
-							<p>Generate a new listing</p>
+							<h2><?php echo($this->isEdit() ? 'Edit Listings' : 'Add a New Listings'); ?></h2>
+							<p><?php echo($this->isEdit() ? 'Edit and Update Your Listing' : 'Create a New Listings'); ?></p>
 						</div>
 					</div>
 				</div>
+				<?php if(!isLoggedIn()){ ?>
+				<div class="row login-banner">
+					<div class="col-lg-12 col-lg-12">
+						<div class="form-group">
+							<label class="col-lg-12 control-label" for="title">You must be logged in to create your listing</label>  
+							<div class="col-lg-12">
+								 <a href="#" i class="nav-link login-button" href="#"><i class="fab fa-facebook-f"></i> Please Login</a> 
+							</div>
+						</div>
+					</div>
+				</div>
+				<?php } ?>
 				<div class="row">
 					<div class="col-lg-12 col-lg-12">
+				
+						<?php if(isLoggedIn()){ ?>
 						<form id="new-listing" class="form-horizontal" action="" method="post" enctype="multipart/form-data">
 							<fieldset>
 
 							<!-- Form Name -->
-							<legend>New Listing</legend>
+							<div class="col-lg-12">
+								<legend><?php e($this->isEdit() ? "Edit Listing" : "New Listing"); ?></legend>
+							</div>
+							
+							<?php if($this->isEdit()){ ?>
+								<input id="textinput" name="guid" type="hidden" value="<?php echo $this->listing->guid ?>">
+							<?php } ?>
 							
 							<!-- Text input-->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="title">Listing Title *</label>  
 							  <div class="col-lg-12">
-							  <input required="" id="textinput" name="title" type="text" placeholder="Short title describing your listing" class="form-control input-lg">
-								
+							  <input required="" id="textinput" name="title" type="text" placeholder="Title describing your listing" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->title : ""); ?>">
 							  </div>
 							</div>
+							
+							<!-- Select Basic -->
+							<div class="form-group">
+							  <label class="col-lg-12 control-label" for="type">Status *</label>
+							  <label class="col-lg-12 control-hint">Status of your listing, you can change this at a later date.</label>
+							  <div class="col-lg-12">
+								<select required="" id="selectbasic" name="status" class="form-control">
+								  <option <?php e($this->isEdit() && $this->listing->type == "For Sale" ? "selected" : ""); ?> value="For Sale">For Sale</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Pending Collection" ? "selected" : ""); ?> value="Pending Collection">Pending Collection</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Sold" ? "selected" : ""); ?> value="Sold">Sold</option>
+								</select>
+							  </div>
+							</div>							
 
 							<!-- Text input-->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="name">Name *</label>  
 							  <div class="col-lg-12">
-							  <input required="" id="textinput" name="name" type="text" placeholder="Your name" class="form-control input-lg">
-								
+							  <input required="" id="textinput" name="name" type="text" placeholder="Your name" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->name : userName()); ?>">
 							  </div>
 							</div>
 
 							<!-- Text input-->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="location">Location *</label>  
+							  <label class="col-lg-12 control-hint">We will provide a map of your location using this information.</label>
 							  <div class="col-lg-12">
-							  <input required="" id="textinput" name="location" type="text" placeholder="Where can this listing be collected" class="form-control input-lg">
+							  <input required="" id="textinput" name="location" type="text" placeholder="Where can this listing be collected" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->location : ""); ?>">
 								
 							  </div>
 							</div>
@@ -120,25 +180,37 @@ class addListing extends \myReef\views\view{
 							  <label class="col-lg-12 control-label" for="type">Type *</label>
 							  <div class="col-lg-12">
 								<select required="" id="selectbasic" name="type" class="form-control">
-								  <option value="Coral SPS">Coral SPS</option>
-								  <option value="Coral LPS">Coral LPS</option>
-								  <option value="Coral Soft">Coral Soft</option>
-								  <option value="Equipment">Equipment</option>
-								  <option value="Fish">Fish</option>
-								  <option value="Invert">Invert</option>
-								  <option value="Tank Breakdown">Tank Breakdown</option>
-								  <option value="Various">Various</option>
-								  <option value="Service">Service</option>
-								  <option value="Sundries">Sundries</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Coral SPS" ? "selected" : ""); ?> value="Coral SPS">Coral SPS</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Coral LPS" ? "selected" : ""); ?> value="Coral LPS">Coral LPS</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Coral Soft" ? "selected" : ""); ?> value="Coral Soft">Coral Soft</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Equipment" ? "selected" : ""); ?> value="Equipment">Equipment</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Fish" ? "selected" : ""); ?> value="Fish">Fish</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Invert" ? "selected" : ""); ?> value="Invert">Invert</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Tank Breakdown" ? "selected" : ""); ?> value="Tank Breakdown">Tank Breakdown</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Various" ? "selected" : ""); ?> value="Various">Various</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Service" ? "selected" : ""); ?> value="Service">Service</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Sundries" ? "selected" : ""); ?> value="Sundries">Sundries</option>
 								</select>
 							  </div>
 							</div>
 
 							<!-- Textarea -->
 							<div class="form-group">
-							  <label class="col-lg-12 control-label" for="description">Description *</label>
+							  <label class="col-lg-12 control-label" for="description">Summary *</label>
+							  <label class="col-lg-12 control-hint">Provide a short summary of what you have for sale.</label>
+							  <span id="summary-count" class="col-lg-12">120 Remaining</span>
+							  
 							  <div class="col-lg-12">                     
-								<textarea required="" rows="4" class="form-control" id="description" name="description"></textarea>
+								<textarea maxlegth="120" required="" rows="4" class="form-control" id="summary" name="summary"><?php e($this->isEdit() ? $this->listing->summary : ""); ?></textarea>
+							  </div>
+							</div>							
+							
+							<!-- Textarea -->
+							<div class="form-group">
+							  <label class="col-lg-12 control-label" for="description">Description *</label>
+							  <label class="col-lg-12 control-hint">Longer description, describe as best you can with any includes details, extras and damages a buyer should be aware of.</label>
+							  <div class="col-lg-12">                     
+								<textarea required="" rows="4" class="form-control" id="description" name="description"><?php e($this->isEdit() ? $this->listing->description : ""); ?></textarea>
 							  </div>
 							</div>
 
@@ -147,25 +219,18 @@ class addListing extends \myReef\views\view{
 							  <label class="col-lg-12 control-label" for="price">Price *</label>
 							  <div class="col-lg-12">
 								<div class="input-group">
-								  <input required="" id="appendedtext" name="price" class="form-control" placeholder="0.00" type="text">
+								  <input required="" id="appendedtext" name="price" class="form-control" placeholder="10.00" type="text" value="<?php e($this->isEdit() ? $this->listing->price : ""); ?>">
 								  <span class="input-group-addon">£</span>
 								</div>
 								
 							  </div>
 							</div>
 
-							<!-- Password input-->
-							<div class="form-group">
-							  <label class="col-lg-12 control-label" for="password">Password</label>
-							  <div class="col-lg-12">
-								<input id="passwordinput" name="password" type="password" placeholder="password" class="form-control input-lg">
-								<span class="help-block">Set a password if you want to edit your listing after listing</span>
-							  </div>
-							</div>
-
-							<!-- Password input-->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="files[]">Images</label>
+							  <?php if($this->isEdit()){ ?>
+								<label class="col-lg-12 control-warning">If you add new images, these will replace your previous images saved for your listing. Leave blank to retain your current images.</label>
+							  <?php } ?>
 							  <div class="col-lg-12">
 								<input type="file" name="files[]" id="filer_input" multiple="multiple">
 								<span class="help-block">Upload up to 3 images to your listing</span>
@@ -180,7 +245,8 @@ class addListing extends \myReef\views\view{
 							</div>
 
 							</fieldset>
-
+						</form>
+						<?php } ?>
 					</div>
 				</div>
 			</div>

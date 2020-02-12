@@ -17,7 +17,13 @@ class view{
 		  <meta charset="utf-8">
 		  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		  <meta name="viewport" content="width=device-width, initial-scale=1">
-		  <title>MyReefClub</title>
+		  <title><?php e( isset($this->meta->fetch()['title']) ? $this->meta['title'] : _DEFAULT_TITLE); ?></title>
+
+		  <?php if(isset($this->meta)){ ?>
+			  <?php foreach($this->meta->fetch() as $key => $meta){		  
+				?><meta property="<?php echo $key ?>" content="<?php e($meta) ?>" />
+			  <?php  } ?>
+		  <?php } ?>
 		  
 
 		  <!-- Bootstrap -->
@@ -52,16 +58,21 @@ class view{
 		  <script src="<?php echo _LIBS; ?>jquery-nice-select/js/jquery.nice-select.min.js"></script>
 		  <script src="<?php echo _LIBS; ?>fancybox/jquery.fancybox.pack.js"></script>
 		  <script src="<?php echo _LIBS; ?>smoothscroll/SmoothScroll.min.js"></script>
-		  <script src="<?php echo _LIBS; ?>jQuery.filer/js/jquery.filer.min.js"></script>		  
+		  <script src="<?php echo _LIBS; ?>jQuery.filer/js/jquery.filer.min.js"></script>		
+		  <script src="<?php echo _JS ?>facebook.js"></script>
 		  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
-	  
+		  <script src="https://connect.facebook.net/en_US/all.js"></script>
+		  
+		  
+		  
 		<?php if(method_exists($this,'inlineJS')){ ?><script><?php $this->inlineJS(); ?></script><?php } ?>
 		<?php if(method_exists($this,'inlineCSS')){ ?><script><?php $this->inlineCSS(); ?></script><?php } ?>
 		  
 		</head>
 
 		<body class="body-wrapper">
+
 		<section>
 			<div class="container">
 				<div class="row">
@@ -93,6 +104,26 @@ class view{
 									<li class="nav-item">
 										<a href="/add-listing" class="nav-link add-button" href="#"><i class="fas fa-plus-square"></i> Add Listing</a>
 									</li>
+									
+									<?php if(isLoggedIn()){ ?>
+									<li class="nav-item">
+										 <a href="#" i class="nav-link logout-button" href="#"><i class="fas fa-file"></i> My Listings</a> 										
+									</li>			
+									<?php } ?>
+									
+									<?php if(!isLoggedIn()){ ?>
+									<li class="nav-item">									
+										 <a href="#" i class="nav-link login-button" href="#"><i class="fab fa-facebook-f"></i> Login</a> 
+									</li>
+									<?php } ?>
+									
+									<?php if(isLoggedIn()){ ?> 
+									<li class="nav-item">
+										<a href="#" i class="nav-link logout-button" href="#"><i class="fab fa-facebook-f"></i> Logout</a>
+									</li>
+									 <?php } ?>
+									 
+								
 								</ul>
 							</div>
 						</nav>

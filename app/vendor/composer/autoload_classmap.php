@@ -7,9 +7,11 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'myReef\\classes\\ajax' => $baseDir . '/classes/ajax.php',
-    'myReef\\classes\\imageUploader' => $baseDir . '/classes/imageUploader.php',
+    'myReef\\classes\\imageUploader' => $baseDir . '/classes/image-uploader.php',
+    'myReef\\classes\\metaProperties' => $baseDir . '/classes/meta-properties.php',
     'myReef\\classes\\page' => $baseDir . '/classes/page.php',
     'myReef\\classes\\uploader' => $baseDir . '/classes/uploader.php',
+    'myReef\\classes\\user' => $baseDir . '/classes/user.php',
     'myReef\\controllers\\addListing' => $baseDir . '/controllers/add-listing.php',
     'myReef\\controllers\\ajax' => $baseDir . '/controllers/ajax.php',
     'myReef\\controllers\\controller' => $baseDir . '/controllers/controller.php',
@@ -21,6 +23,8 @@ return array(
     'myReef\\models\\ajaxResponse' => $baseDir . '/models/ajax-response.php',
     'myReef\\models\\listing' => $baseDir . '/models/listing.php',
     'myReef\\models\\model' => $baseDir . '/models/model.php',
+    'myReef\\services\\listings' => $baseDir . '/services/listings.php',
+    'myReef\\services\\service' => $baseDir . '/services/service.php',
     'myReef\\views\\addListing' => $baseDir . '/views/add-listing.php',
     'myReef\\views\\faq' => $baseDir . '/views/faq.php',
     'myReef\\views\\listing' => $baseDir . '/views/listing.php',

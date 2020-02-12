@@ -47,9 +47,11 @@ class ComposerStaticInit32fcc238ffafd6e70c457a24144561ed
 
     public static $classMap = array (
         'myReef\\classes\\ajax' => __DIR__ . '/../..' . '/classes/ajax.php',
-        'myReef\\classes\\imageUploader' => __DIR__ . '/../..' . '/classes/imageUploader.php',
+        'myReef\\classes\\imageUploader' => __DIR__ . '/../..' . '/classes/image-uploader.php',
+        'myReef\\classes\\metaProperties' => __DIR__ . '/../..' . '/classes/meta-properties.php',
         'myReef\\classes\\page' => __DIR__ . '/../..' . '/classes/page.php',
         'myReef\\classes\\uploader' => __DIR__ . '/../..' . '/classes/uploader.php',
+        'myReef\\classes\\user' => __DIR__ . '/../..' . '/classes/user.php',
         'myReef\\controllers\\addListing' => __DIR__ . '/../..' . '/controllers/add-listing.php',
         'myReef\\controllers\\ajax' => __DIR__ . '/../..' . '/controllers/ajax.php',
         'myReef\\controllers\\controller' => __DIR__ . '/../..' . '/controllers/controller.php',
@@ -61,6 +63,8 @@ class ComposerStaticInit32fcc238ffafd6e70c457a24144561ed
         'myReef\\models\\ajaxResponse' => __DIR__ . '/../..' . '/models/ajax-response.php',
         'myReef\\models\\listing' => __DIR__ . '/../..' . '/models/listing.php',
         'myReef\\models\\model' => __DIR__ . '/../..' . '/models/model.php',
+        'myReef\\services\\listings' => __DIR__ . '/../..' . '/services/listings.php',
+        'myReef\\services\\service' => __DIR__ . '/../..' . '/services/service.php',
         'myReef\\views\\addListing' => __DIR__ . '/../..' . '/views/add-listing.php',
         'myReef\\views\\faq' => __DIR__ . '/../..' . '/views/faq.php',
         'myReef\\views\\listing' => __DIR__ . '/../..' . '/views/listing.php',

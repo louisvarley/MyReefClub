@@ -23,7 +23,8 @@ class listing extends \myReef\models\model{
 	public $description;
 	public $price;
 	public $location;
-	public $password;
+	public $user;
+	public $summary;
 	public $images = [];
 
 	function __construct($json = null){
@@ -33,7 +34,6 @@ class listing extends \myReef\models\model{
 	private function newFromJSON($json){
 		
 		$data = (object) json_decode($json);	
-		
 		$this->guid = (!isset($data->guid) ? guid() : $data->guid);
 		$this->created = (!isset($data->created) ? time() : $data->created);
 		$this->createdIP = (!isset($data->ipAddress) ? getClientIP() : $data->ipAddress); 
@@ -41,48 +41,36 @@ class listing extends \myReef\models\model{
 		$this->name = (!empty($data->name) ? $data->name : "");
 		$this->location = (!empty($data->location) ? $data->location : "");
 		$this->type  = (!empty($data->type) ? $data->type : "");
+		$this->status  = (!empty($data->status) ? $data->status : "");	
+		$this->summary  = (!empty($data->summary) ? $data->summary : "");			
+		$this->user  = (!empty($data->user) ? $data->user : "");		
 		$this->price  = (!empty($data->price) ? $data->price : "");
 		$this->description  = (!empty($data->description) ? $data->description : "");	
 		$this->images = (!empty($data->images) ? ( is_array($data->images) ? $data->images : json_decode($data->images) ) : []);
-		$this->url = "/listing/" . str_replace("+","-",urlencode($this->title)) . '/' . $this->guid;
-		$this->status = "live";
+		$this->url = "/listing/" . str_replace("+","-",urlencode($this->title)) . '/' . $this->guid;		
 	}
 	
 	private function loadFromJSON($json){
 		
 		$data = (object) json_decode($json);		
-		$this->password = $data->password;
-		$this->salt = $data->salt;
+
 		$this->newFromJSON($json);
 	}
+
 	
-	function setPassword($password){
+	/* Save, provide your user id to verify */
+	function save(){
 		
-		if( !isset($this->password) ){
-			$this->salt = (empty($salt) ? salt() : $salt); 
-			$this->password = password_hash($this->salt . $password, PASSWORD_DEFAULT);
-		}
-	}
-	
-	function verifyPassword($password){
-		
-		if(password_verify($this->salt . $password, $this->password)){
-			return true;
-		}else{
-			return false;
-		}
-	
-	}	
-	
-	function save($password){
-		
-		if(isset($this->password) && isset($this->salt) && $this->verifyPassword($password)){
+		if(!isset($this->user)) $this->user = userID();
+
+		if($this->user == userID()){
 		
 			$this->edited = time();
 			$this->editedIP = getClientIP(); 
 			
 			if (!file_exists(_LISTINGS_DIR)) mkdir(_LISTINGS_DIR, 0777, true);
 			$data = json_encode($this);
+			
 			file_put_contents(_LISTINGS_DIR . $this->guid . '.json', $data);
 			
 			return true;
@@ -97,6 +85,7 @@ class listing extends \myReef\models\model{
 		if(file_exists(_LISTINGS_DIR . $guid . '.json')){
 			$json = file_get_contents(_LISTINGS_DIR . $guid . '.json');
 			$this->loadFromJSON($json);
+			return true;
 		}else{
 			return false;
 		}

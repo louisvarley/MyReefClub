@@ -515,6 +515,22 @@ button {
   box-shadow: none;
 }
 
+.btn-tiny{
+	height:20px;
+	font-size: 10px;
+	font-weight: 700;
+	padding:1px 5px;
+}
+
+.btn-tiny svg{
+	margin-right:5px;
+}
+
+#hidden-copy-url{
+	position:absolute;
+	top:-10000px;
+}
+
 /**
  *
  * Card Styles
@@ -661,21 +677,45 @@ ul.pagination .active a {
   padding: 20px 0;
 }
 
-.login-button {
-  border: 2px solid #dedede;
-  margin-right: 8px;
-  padding: 6px 20px !important;
-}
-
 .add-button {
   background: #0d53a9;
   color: #fff;
   padding: 8px 20px !important;
   display: inline-block;
+  margin-right:5px;
+}
+
+.login-button {
+  background: #3b5998;
+  color: #fff;
+  padding: 8px 20px !important;
+  display: inline-block;
+  margin-right:5px;
+}
+
+.logout-button {
+  background: #666666;
+  color: #fff;
+  padding: 8px 20px !important;
+  display: inline-block;
+  margin-right:5px;
 }
 
 .add-button:hover {
   color: #fff;
+}
+
+.login-button:hover {
+  color: #fff;
+}
+
+.logout-button:hover {
+  color: #fff;
+}
+
+.login-banner{
+	margin-bottom:20px;
+	text-align: center;
 }
 
 .main-nav .nav-item .nav-link {
@@ -1363,13 +1403,51 @@ ul.pagination .active a {
 
 .product-item .thumb-content {
   position: relative;
+
+}
+
+.product-item .thumb-img{
+  height:300px; 
+  width:350px;
+  background-repeat: no-repeat;
+  background-position: center; 
+  background-size: 400px;
+  
 }
 
 .product-item .thumb-content .price {
   position: absolute;
+  border-radius:10px;
+  float:left;
   top: 10px;
   left: 10px;
   background: #0d53a9;
+  color: #fff;
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.product-item .thumb-content .type {
+  position: absolute;
+  border-radius:10px;  
+  top: 10px;
+  right: 10px;
+  float:right;
+  background: #232425;
+  color: #fff;
+  display: inline-block;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.product-item .thumb-content .status {
+  position: absolute;
+  border-radius:10px;  
+  bottom:10px;
+  right: 10px;
+  float:right;
+  background: #003300;
   color: #fff;
   display: inline-block;
   padding: 4px 8px;
@@ -1389,6 +1467,10 @@ ul.pagination .active a {
   font-size: 12px;
 }
 
+.product-item .product-meta svg{
+	margin-right:5px;
+}
+
 .product-item .product-meta li a i {
   margin-right: 4px;
 }
@@ -1401,6 +1483,7 @@ ul.pagination .active a {
   font-size: 18px;
   color: #dedede;
   cursor: pointer;
+
 }
 
 .product-item .product-ratings .selected i {
@@ -2099,6 +2182,15 @@ ul.pagination .active a {
   cursor: pointer;
 }
 
+.control-hint{
+	color:#0d53a9;
+}
+
+.control-warning{
+	color:#ff3333;
+}
+
+
 @media (max-width: 768px) {
   .submit-coupon-sec form .coupon-type ul.coupon-types li {
     margin: 5px;
@@ -2480,5 +2572,9 @@ article.single-post p {
 .top-to a:hover {
   text-decoration: none;
 }
+
+.
+
+
 
 /*# sourceMappingURL=maps/style.css.map */
