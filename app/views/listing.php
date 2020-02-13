@@ -132,7 +132,7 @@ class listing extends \myReef\views\view{
 					<div class="content">
 						<div class="tab-content" id="pills-tabContent">
 							<div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-								<h3 class="tab-title">Product Description</h3>
+								<h3 class="tab-title">Listing Description</h3>
 								<?php e($this->listing->description) ?>
 							</div>						
 						</div>
@@ -142,6 +142,10 @@ class listing extends \myReef\views\view{
 			<div class="col-md-4">
 				<div class="sidebar">
 				
+
+					<div class="widget status text-center">
+						<p><?php echo $this->listing->status; ?></p>
+					</div>	
 					
 					<?php if(userID() == $this->listing->user){ ?>
 					<div class="widget text-center">

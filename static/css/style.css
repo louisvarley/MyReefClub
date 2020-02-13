@@ -1696,11 +1696,28 @@ ul.pagination .active a {
   background: #0d53a9;
 }
 
+.widget.status {
+  background: #0fa34d;
+}
+
 .widget.price h4 {
   color: #fff;
 }
 
+.widget.status h4 {
+  color: #fff;
+}
+
+
 .widget.price p {
+  color: #fff;
+  font-size: 30px;
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
+}
+
+.widget.status p {
   color: #fff;
   font-size: 30px;
   text-align: center;
