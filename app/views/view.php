@@ -17,7 +17,7 @@ class view{
 		  <meta charset="utf-8">
 		  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 		  <meta name="viewport" content="width=device-width, initial-scale=1">
-		  <title><?php e( isset($this->meta->fetch()['title']) ? $this->meta['title'] : _DEFAULT_TITLE); ?></title>
+		  <title><?php e( isset($this->meta->fetch()->title) ? $this->meta['title'] : _DEFAULT_TITLE); ?></title>
 
 		  <?php if(isset($this->meta)){ ?>
 			  <?php foreach($this->meta->fetch() as $key => $meta){		  
@@ -108,7 +108,7 @@ class view{
 										<a class="nav-link" href="/donate">Donate</a>
 									</li>										
 								</ul>
-								<ul class="navbar-nav ml-auto mt-10">
+								<ul class="navbar-nav ml-auto mt-10 side-nav">
 									<li class="nav-item">
 										<a href="/add-listing" class="nav-link add-button" href="#"><i class="fas fa-plus-square"></i> Add Listing</a>
 									</li>
@@ -142,7 +142,7 @@ class view{
 						<!-- Header Contetnt -->
 						<div class="content-block">
 							<h1>My Club, My Rules</h1>
-							<p>Join other reefers in swapping, selling and buying <br> without fear from the internet police</p>
+							<p>Join other UK reefers in swapping, selling and buying</p>
 						</div>
 					</div>
 				</div>

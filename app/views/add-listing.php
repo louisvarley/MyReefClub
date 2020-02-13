@@ -71,7 +71,7 @@ class addListing extends \myReef\views\view{
 		jQuery( document ).ready(function() {
 			$('#filer_input').filer({
 				limit: 3,
-				maxSize: 3,
+				maxSize: 10,
 				extensions: ['jpg', 'jpeg', 'png', 'gif'],
 				changeInput: true,
 				showThumbs: true,

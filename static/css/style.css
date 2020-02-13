@@ -683,7 +683,6 @@ ul.pagination .active a {
   color: #fff;
   padding: 8px 20px !important;
   display: inline-block;
-  margin-right:5px;
 }
 
 .login-button {
@@ -691,7 +690,6 @@ ul.pagination .active a {
   color: #fff;
   padding: 8px 20px !important;
   display: inline-block;
-  margin-right:5px;
 }
 
 .logout-button {
@@ -699,7 +697,6 @@ ul.pagination .active a {
   color: #fff;
   padding: 8px 20px !important;
   display: inline-block;
-  margin-right:5px;
 }
 
 .add-button:hover, .add-button:active, .add-button:visited, .add-button:link {
@@ -723,6 +720,13 @@ ul.pagination .active a {
   font-size: 16px;
   line-height: 43px;
   padding: 0 20px;
+}
+
+.side-nav .nav-item .nav-link {
+  font-size: 14px;
+  padding: 0 20px;
+  margin-left:20px;
+  margin-bottom:10px;
 }
 
 .main-nav .nav-item .nav-link span {

@@ -19,17 +19,11 @@ class listing extends \myReef\controllers\controller{
 		}
 		
 		/* Set the Meta for this page */
+		$this->title = $this->view->listing->title;
+		$this->description = $this->view->listing->description;
+		$this->image = isset($this->view->listing->images[0]) ? baseURL() . $this->view->listing->images[0] : __DEFAULT_IMAGE;
+		$this->type = "article";
 		
-		$this->view->meta->addMeta(array(
-			'og:url' => currentURL(),
-			'og:type' => 'article',			
-			'og:title' => $this->view->listing->title,
-			'og:description' => $this->view->listing->description,
-			'og:image' => isset($this->view->listing->images[0]) ? baseURL() . $this->view->listing->images[0] : __DEFAULT_IMAGE,			
-			
-		));
-		
-	
 	}	
 	
 }

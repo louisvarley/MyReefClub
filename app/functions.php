@@ -51,6 +51,7 @@ function parts()
 
 function getClientIP()
 {
+
     if(!empty($_SERVER['HTTP_CLIENT_IP'])){
         //ip from share internet
         $ip = $_SERVER['HTTP_CLIENT_IP'];
@@ -60,7 +61,9 @@ function getClientIP()
     }else{
         $ip = $_SERVER['REMOTE_ADDR'];
     }
-    return $ip;
+	
+	return explode(":",$ip)[0];
+
 }
 
 /* Unique Nonce tied to the date and IP Address to semi-secure AJAX calls */

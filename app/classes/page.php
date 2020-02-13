@@ -9,6 +9,10 @@ class page{
 	
 	function __construct(){
 		
+		/* Legacy Redirector */
+		
+		if(!empty($_GET['data'])) redirect('/legacy/' . $_GET['data']);
+		
 		/* The URL */
 		$this->url = empty($_GET['url']) ? 'root' : $_GET['url'];
 		
@@ -17,8 +21,6 @@ class page{
 
 		/* Controller Class */
 		$this->controllerClass = "myReef\\controllers\\$this->route";	
-		
-		
 		
 		/* View Class */
 		$this->viewClass = "myReef\\views\\$this->route";	
@@ -40,6 +42,8 @@ class page{
 		
 		if(!$this->hasView && !$this->hasController) redirect('page-not-found');
 		
+		
+		
 	}
 	
 	function load(){
@@ -49,6 +53,16 @@ class page{
 		if(method_exists($this->controller,'nonce')) $this->controller->nonce();		
 		if(method_exists($this->controller,'init')) $this->controller->init();
 		if(method_exists($this->controller,'post') && !empty($_POST)) $this->controller->post();
+		
+		$this->controller->view->meta->addMeta(array(
+			'title' => (isset($this->controller->title) ? $this->controller->title : _DEFAULT_TITLE),
+			'og:url' => currentURL(),
+			'og:type' => (isset($this->controller->type) ? $this->controller->type : "website"),
+			'og:title' => (isset($this->controller->title) ? $this->controller->title : _DEFAULT_TITLE),
+			'og:description' => (isset($this->controller->description) ? $this->controller->description : _DEFAULT_DESCRIPTION),
+			'og:image' => (isset($this->controller->images) ? $this->controller->images : baseURL() . _DEFAULT_IMAGE),
+		));		
+				
 		
 	}
 	

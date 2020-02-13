@@ -6,7 +6,7 @@ class imageUploader extends \myReef\classes\uploader{
 	
     protected $options = array(
         'limit' => null,
-        'maxSize' => 3080349,
+        'maxSize' => 10080349,
         'extensions' => array('jpg','jpeg','png','gif'),
         'required' => false,
         'uploadDIR' => _UPLOADS_DIR,
@@ -24,12 +24,31 @@ class imageUploader extends \myReef\classes\uploader{
     );
 
 	public function beforeUpload(){
+		 
+	  $this->imageResource = imagecreatefromstring($this->content);
+		 
+	  $this->height = imagesx($this->imageResource);
+	  $this->width = imagesy($this->imageResource);
 		  
 	  $this->resize();
 	}
 	  
 	public function resize(){
-		  
+		
+		
+		$h = 1024;
+		$w = 1280;
+		
+		$image = imagescale($this->imageResource, $w);
+		ob_start(); //Turn on output buffering
+		imagejpeg($image); //Generate your image
+
+		$this->content = ob_get_contents(); // get the image as a string in a variable
+
+		ob_end_clean(); //Turn off output buffering and clean it
+		
+
+
 		  
 	}
 	

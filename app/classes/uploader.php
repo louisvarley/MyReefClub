@@ -97,7 +97,7 @@ class uploader extends \myReef\classes\ajax{
 		if(empty($_FILES[$field]['tmp_name'][0])) $this->response->setCode(105);
 		if(empty($_FILES[$field]['name'][0])) $this->response->setCode(105);
 		
-		if (!file_exists($this->options['uploadURL']))  mkdir($this->options['uploadURL'], 0777, true);
+		if (!file_exists($this->options['uploadDIR']))  mkdir($this->options['uploadDIR'], 0777, true);
 
 		$this->file = ($_FILES[$field]['tmp_name'][0]);
 		$this->fileSize = filesize($this->file);
@@ -114,10 +114,6 @@ class uploader extends \myReef\classes\ajax{
     private function validate(){
 	
         if($this->options['maxSize'] < $this->fileSize) $this->response->setCode(101);		
-		
-		//if(ini_get('upload_max_filesize') < $this->fileSize) $this->response->setCode(100);
-		
-		//if(!in_array($this->extension,$this->options['extensions'])) $this->response->setCode(109);
 
 	}
 	
