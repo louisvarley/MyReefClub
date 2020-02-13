@@ -47,10 +47,16 @@ I knocked this code together in a couple of days. Its a simple MVCS design of wh
 		));
 ````
 
-Limit = How Many to Return (Always in Created Date order)
+#### Limit
+How Many to Return (Always in Created Date order)
 
-Array of Filters
-property = The Property you want to filter, matches something in the model
-comparison = [neq,ne,gt,ln,nn,lne, gte, in] AKA [Not Equal, Equal, Greater Than, Less Than, Greater or Equal, Less or Equal, Not Null, Is Null]
-value = what value to filter by
+#### Array of Filters
+#####property
+The Property you want to filter, matches something in the model
+
+##### comparison
+[neq,ne,gt,ln,nn,lne, gte, in] AKA [Not Equal, Equal, Greater Than, Less Than, Greater or Equal, Less or Equal, Not Null, Is Null]
+
+##### value
+What value to filter by
 
