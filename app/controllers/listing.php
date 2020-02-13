@@ -21,7 +21,7 @@ class listing extends \myReef\controllers\controller{
 		/* Set the Meta for this page */
 		$this->title = $this->view->listing->title;
 		$this->description = $this->view->listing->description;
-		$this->image = isset($this->view->listing->images[0]) ? baseURL() . $this->view->listing->images[0] : __DEFAULT_IMAGE;
+		$this->image = isset($this->view->listing->images[0]) ? baseURL() . $this->view->listing->images[0] : _DEFAULT_IMAGE;
 		$this->type = "article";
 		
 	}	
