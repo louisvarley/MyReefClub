@@ -25,13 +25,18 @@ class listing extends \myReef\models\model{
 	public $location;
 	public $user;
 	public $summary;
+	public $bitly;
+	public $contact;
 	public $images = [];
+	
+	public $found = false;
 
 	function __construct($json = null){
 		if(!empty($json)) $this->newFromJSON($json);	
 	}
 	
 	private function newFromJSON($json){
+		$this->found = true;
 		
 		$data = (object) json_decode($json);	
 		$this->guid = (!isset($data->guid) ? guid() : $data->guid);
@@ -42,8 +47,10 @@ class listing extends \myReef\models\model{
 		$this->location = (!empty($data->location) ? $data->location : "");
 		$this->type  = (!empty($data->type) ? $data->type : "");
 		$this->status  = (!empty($data->status) ? $data->status : "");	
-		$this->summary  = (!empty($data->summary) ? $data->summary : "");			
+		$this->summary  = (!empty($data->summary) ? $data->summary : "");		
+		$this->contact  = (!empty($data->contact) ? $data->contact : "");			
 		$this->user  = (!empty($data->user) ? $data->user : "");		
+		$this->bitly  = (!empty($data->bitly) ? $data->bitly : "");				
 		$this->price  = (!empty($data->price) ? $data->price : "");
 		$this->description  = (!empty($data->description) ? $data->description : "");	
 		$this->images = (!empty($data->images) ? ( is_array($data->images) ? $data->images : json_decode($data->images) ) : []);
@@ -53,7 +60,6 @@ class listing extends \myReef\models\model{
 	private function loadFromJSON($json){
 		
 		$data = (object) json_decode($json);		
-
 		$this->newFromJSON($json);
 	}
 
@@ -61,8 +67,11 @@ class listing extends \myReef\models\model{
 	/* Save, provide your user id to verify */
 	function save(){
 		
-		if(!isset($this->user)) $this->user = userID();
+		if(!isset($this->user) || empty($this->user)) $this->user = userID();
+		
+		if(!isset($this->bitly) || empty($this->bitly)) $this->bitly = generateBitly(baseURL() . $this->url);
 
+		
 		if($this->user == userID()){
 		
 			$this->edited = time();

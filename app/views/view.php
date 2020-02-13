@@ -91,35 +91,37 @@ class view{
 										<a href="/" class="nav-link" >Home</a>
 									</li>								
 									<li class="nav-item active">
-										<a class="nav-link" href="index.html">Browse Listings</a>
+										<a class="nav-link" href="/browse-listings">Browse</a>
 									</li>
+									<?php if(isLoggedIn()){ ?>
+									<li class="nav-item">
+										<a class="nav-link" href="/my-listings">My Listings</a>
+									</li>				
+									<?php } ?>
 									<li class="nav-item">
 										<a class="nav-link" href="/faq">FAQ</a>
 									</li>									
 									<li class="nav-item">
-										<a class="nav-link" href="dashboard.html">Contact</a>
-									</li>								
+										<a class="nav-link" href="/contact">Contact</a>
+									</li>		
+									<li class="nav-item">
+										<a class="nav-link" href="/donate">Donate</a>
+									</li>										
 								</ul>
 								<ul class="navbar-nav ml-auto mt-10">
 									<li class="nav-item">
 										<a href="/add-listing" class="nav-link add-button" href="#"><i class="fas fa-plus-square"></i> Add Listing</a>
 									</li>
 									
-									<?php if(isLoggedIn()){ ?>
-									<li class="nav-item">
-										 <a href="#" i class="nav-link logout-button" href="#"><i class="fas fa-file"></i> My Listings</a> 										
-									</li>			
-									<?php } ?>
-									
 									<?php if(!isLoggedIn()){ ?>
 									<li class="nav-item">									
-										 <a href="#" i class="nav-link login-button" href="#"><i class="fab fa-facebook-f"></i> Login</a> 
+										 <a href="#" i class="nav-link login-button" href="#"><i class="fab fa-facebook-square"></i> Login with Facebook</a> 
 									</li>
 									<?php } ?>
 									
 									<?php if(isLoggedIn()){ ?> 
 									<li class="nav-item">
-										<a href="#" i class="nav-link logout-button" href="#"><i class="fab fa-facebook-f"></i> Logout</a>
+										<a href="#" i class="nav-link logout-button" href="#">Logout</a>
 									</li>
 									 <?php } ?>
 									 
@@ -175,13 +177,9 @@ class view{
 			  <!-- Link list -->
 			  <div class="col-lg-2 offset-lg-1 col-md-3">
 				<div class="block">
-				  <h4>Site Pages</h4>
 				  <ul>
-					<li><a href="#">Boston</a></li>
-					<li><a href="#">How It works</a></li>
-					<li><a href="#">Deals & Coupons</a></li>
-					<li><a href="#">Articls & Tips</a></li>
-					<li><a href="#">Terms of Services</a></li>
+					<li><a href="/privacy-policy">Privacy Policy</a></li>
+					<li><a href="/terms-of-service">Terms of Service</a></li>
 				  </ul>
 				</div>
 			  </div>
@@ -191,11 +189,13 @@ class view{
 			  <div class="col-lg-4 col-md-7">
 				<!-- App promotion -->
 				<div class="block-2 app-promotion">
-				  <a href="">
+				  <a href="https://www.facebook.com/groups/EssexReefClub/">
 					<!-- Icon -->
-					<img src="<?php echo _IMAGES ?>footer/phone-icon.png" alt="mobile-icon">
+					<i class="fab fa-facebook-square"></i>
 				  </a>
-				  <p>Get the Dealsy Mobile App and Save more</p>
+				  <a href="https://www.facebook.com/groups/EssexReefClub/">
+					<p>Join the Essex Reef Club Facebook Group</p>
+				  </a>
 				</div>
 			  </div>
 			</div>
@@ -210,17 +210,8 @@ class view{
 				<div class="col-sm-6 col-12">
 				  <!-- Copyright -->
 				  <div class="copyright">
-					<p>Copyright © 2016. All Rights Reserved</p>
+					<p>Copyright © <?php echo(date("Y")) ?> All Rights Reserved</p>
 				  </div>
-				</div>
-				<div class="col-sm-6 col-12">
-				  <!-- Social Icons -->
-				  <ul class="social-media-icons text-right">
-					  <li><a class="fa fa-facebook" href=""></a></li>
-					  <li><a class="fa fa-twitter" href=""></a></li>
-					  <li><a class="fa fa-pinterest-p" href=""></a></li>
-					  <li><a class="fa fa-vimeo" href=""></a></li>
-					</ul>
 				</div>
 			  </div>
 			</div>

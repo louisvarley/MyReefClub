@@ -50,7 +50,7 @@ class addListing extends \myReef\controllers\controller{
 		$this->listing->save();
 		
 		/* Send user to their listing */
-		redirect($this->listing->url);
+		redirect($this->listing->url . '/new');
 		die();
 		
 	}

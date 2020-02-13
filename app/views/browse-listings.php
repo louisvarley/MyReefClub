@@ -2,7 +2,7 @@
 
 namespace myReef\views;
 
-class root extends \myReef\views\view{
+class browseListings extends \myReef\views\view{
 	
 	function content(){
 		
@@ -14,11 +14,12 @@ class root extends \myReef\views\view{
 				<div class="row">
 					<div class="col-md-12">
 						<div class="section-title">
-							<h2>Recent Listings</h2>
-							<p>Look at the latest listings on the site</p>
+							<h2>Browse Listings</h2>
+							<p><?php echo $this->listings->count; ?> Listings</p>
 						</div>
 					</div>
 				</div>
+				
 				<div class="row">
 					<!-- offer 01 -->
 					

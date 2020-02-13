@@ -4,6 +4,10 @@ namespace myReef\views;
 
 class listing extends \myReef\views\view{
 	
+	public function isNew(){
+		return isset(parts()[4]) ? true : false;
+	}	
+	
 	function inlineJS(){
 			
 	
@@ -18,22 +22,26 @@ class listing extends \myReef\views\view{
 		
 		jQuery( document ).ready(function(){
 			
-	
-			jQuery('#share-url').click(function(){		
-				jQuery('#hidden-copy-url').val(location.href);
-				var copyText = document.getElementById("hidden-copy-url");
+			jQuery('#modalLink').click(function(){
+				$("#linkModal").modal()
+			});
+			
+			jQuery('#modaLinkCopy').click(function(){		
+				var copyText = document.getElementById("#modalLinkText");
 				copyText.select();
 				copyText.setSelectionRange(0, 99999); /*For mobile devices*/
 				document.execCommand("copy");
-				
-				jQuery(this).html(jQuery(this).html().replace("Copy Link","Copied.."));
-				
-				
-			});
+				jQuery(this).html(jQuery(this).html().replace("Copy Link","Copied.."));			
+			});			
 			
 		})
-
 		
+		<?php 		
+		if($this->isNew()){ ?>
+		jQuery( document ).ready(function(){
+			$("#linkModal").modal()
+		});
+		<?php } ?>
 		
 		<?php
 	
@@ -41,7 +49,33 @@ class listing extends \myReef\views\view{
 	
 	function content(){
 		
+		
 		?>	
+		
+		
+		
+		
+<div class="modal fade" id="linkModal" tabindex="-1" role="dialog" aria-labelledby="linkModelLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="linkModelLabel">Listing URL</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <input readonly="true" class="form-control input-lg" type="text" id="#modalLinkText" value="<?php echo $this->listing->bitly ?>">
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" id="modaLinkCopy" class="btn btn-primary">Copy Link</button>
+      </div>
+    </div>
+  </div>
+</div>		
+		
+		
 <section class="section bg-gray">
 	<!-- Container Start -->
 	<div class="container">
@@ -50,6 +84,7 @@ class listing extends \myReef\views\view{
 			<div class="col-md-8">
 				<div class="product-details">
 					<h1 class="product-title"><?php e($this->listing->title) ?></h1>
+					<h4><?php echo($this->listing->summary) ?></h4>
 					<div class="product-meta">
 						<ul class="list-inline">
 							<li class="list-inline-item"><i class="fa fa-user"></i> By <a href=""><?php e($this->listing->name) ?></a></li>
@@ -119,7 +154,7 @@ class listing extends \myReef\views\view{
 						data-href="<?php echo currentURL() ?>" 
 						data-layout="button">
 					  </div>
-					  <button id="share-url" class="btn btn-info btn-tiny"><i class="fa fa-file"></i>Copy Link</button>
+					  <button id="modalLink" class="btn btn-info btn-tiny"><i class="fa fa-file"></i>Copy Link</button>
 					  <input type="text" value="" id="hidden-copy-url">
 					</div>					
 					<div class="widget price text-center">
@@ -128,12 +163,35 @@ class listing extends \myReef\views\view{
 					</div>											
 					<div class="widget map">
 						<div class="map">
-							<div id="map"></div>
+							<div id="map">
+								<iframe width="320px" height="300" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=<?php e(urlencode($this->listing->location)) ?>&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+							</div>
 						</div>
 					</div>
 
 					<div class="widget text-center">
-						<p><button class="btn btn-primary">Contact Seller</button></p>
+						<p><button data-toggle="collapse" aria-expanded="false" data-target="#contact-seller" aria-controls="contact-seller" class="btn btn-primary">Contact Seller</button></p>
+						<div class="collapse" id="contact-seller">
+						<?php 
+						if (strpos($this->listing->contact, '@') !== false){
+							?>
+							<a href="mailto:<?php e($this->listing->contact)  ?>"><?php e($this->listing->contact) ?></a>
+							<?php
+							
+						}elseif(strpos($this->listing->contact, 'http') !== false) { 
+						
+						?>
+						<a target="_BLANK" href="<?php e($this->listing->contact)?>"><?php e($this->listing->contact) ?></a>
+						<?php
+						
+						}else{
+							?>
+							<?php e($this->listing->contact); ?>
+							<?php
+						}
+						
+						?>
+						</div>
 					</div>						
 					
 				</div>

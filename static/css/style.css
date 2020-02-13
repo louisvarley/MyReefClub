@@ -227,7 +227,7 @@ figure {
 
 a {
   transition: all .3s ease-in 0s;
-  color: #000;
+  color: #0d53a9;
 }
 
 iframe {
@@ -291,7 +291,7 @@ textarea.form-control {
 }
 
 .btn:focus {
-  color: #ddd;
+  color: #fff;
 }
 
 .w-100 {
@@ -305,6 +305,7 @@ textarea.form-control {
 button {
   cursor: pointer;
 }
+
 
 .btn.active:focus, .btn:active:focus, .btn:focus {
   outline: 0;
@@ -511,7 +512,7 @@ button {
 }
 
 .btn:focus {
-  color: #0d53a9;
+  color: #fff;
   box-shadow: none;
 }
 
@@ -701,15 +702,15 @@ ul.pagination .active a {
   margin-right:5px;
 }
 
-.add-button:hover {
+.add-button:hover, .add-button:active, .add-button:visited, .add-button:link {
   color: #fff;
 }
 
-.login-button:hover {
+.login-button:hover, .login-button:active, .login-button:visited, .login-button:link   {
   color: #fff;
 }
 
-.logout-button:hover {
+.logout-button:hover, .logout-button:active, .logout-button:visited, .logout-button:link  {
   color: #fff;
 }
 
@@ -2496,6 +2497,11 @@ article.single-post p {
   color: #fff;
 }
 
+.footer .block-2.app-promotion a svg{
+   color:#fff;
+   font-size:50px;
+}
+
 .footer .block-2.discount-coupon p {
   color: #fff;
   margin-bottom: 0;
@@ -2573,7 +2579,16 @@ article.single-post p {
   text-decoration: none;
 }
 
-.
+.terms-of-service ul{
+	margin-bottom:20px;
+}
+
+.terms-of-service .i li{
+	padding-left:10px;
+	padding-top:5px;
+	list-style-type: circle;
+	margin-left:20px;
+}
 
 
 

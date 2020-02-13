@@ -114,7 +114,7 @@ class addListing extends \myReef\views\view{
 						<div class="form-group">
 							<label class="col-lg-12 control-label" for="title">You must be logged in to create your listing</label>  
 							<div class="col-lg-12">
-								 <a href="#" i class="nav-link login-button" href="#"><i class="fab fa-facebook-f"></i> Please Login</a> 
+								 <a href="#" i class="nav-link login-button" href="#"><i class="fab fa-facebook-square"></i> Login with Facebook</a>
 							</div>
 						</div>
 					</div>
@@ -164,6 +164,16 @@ class addListing extends \myReef\views\view{
 							  <input required="" id="textinput" name="name" type="text" placeholder="Your name" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->name : userName()); ?>">
 							  </div>
 							</div>
+							
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-lg-12 control-label" for="name">Contact *</label>  
+							  <label class="col-lg-12 control-hint">How should potential buyers contact you?</label>
+							  <label class="col-lg-12 control-hint">You could include an email, a mobile number, a link to your facebook profile, or ask the user to find you on a facebook group</label>
+							  <div class="col-lg-12">
+							  <input required="" id="textinput" name="contact" type="text" placeholder="Example: I'm on Essex Reef Group" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->contact : ""); ?>">
+							  </div>
+							</div>							
 
 							<!-- Text input-->
 							<div class="form-group">
@@ -237,6 +247,10 @@ class addListing extends \myReef\views\view{
 							  </div>
 							</div>
 
+							<div class="form-group">
+							 <label class="col-lg-12 control-label"><h4>By submitting your listing, you are agreeing that you have read and fully agree to our <a href="/terms-of-service">Terms of Service</a></h4></label>
+							</div>
+							
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="button1id"></label>
 							  <div class="col-lg-12">

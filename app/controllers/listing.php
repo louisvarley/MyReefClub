@@ -10,13 +10,11 @@ class listing extends \myReef\controllers\controller{
 		if(!isset(parts()[3])) redirect("page-not-found");
 		
 		/* Extract GUID */
-		$guid = parts()[3];
+		$this->guid = parts()[3];
 		
-		/* New Empty Listing */
-		$this->view->listing = $this->listing = new \myReef\models\listing();
+		$this->view->listing = \myReef\services\listings::getListing($this->guid);
 		
-		/* Load Given GUID if found */
-		if(!$this->view->listing->load($guid)){
+		if(!$this->view->listing->found){
 			redirect("listing-not-found");
 		}
 		
@@ -30,10 +28,10 @@ class listing extends \myReef\controllers\controller{
 			'og:image' => isset($this->view->listing->images[0]) ? baseURL() . $this->view->listing->images[0] : __DEFAULT_IMAGE,			
 			
 		));
-
 		
 	
 	}	
+	
 }
 
 

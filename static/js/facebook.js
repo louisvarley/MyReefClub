@@ -35,7 +35,7 @@ jQuery( document ).ready(function() {
 	}
 
 	logout = function() {
-		alert('logout');
+
 		clearCookie("fb_me");
 		document.location.reload();    
 		if (FB.getAuthResponse()) {

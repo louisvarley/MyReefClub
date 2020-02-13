@@ -105,9 +105,13 @@ function e($str){
 	
 }
 
-function timeElapsed($datetime, $full = false) {
+function timeElapsed($timestamp, $full = false) {
+	
+	$datetime = new \DateTime();
+	$datetime->setTimestamp($timestamp);
+
     $now = new DateTime;
-    $ago = new DateTime($datetime);
+    $ago =$datetime;
     $diff = $now->diff($ago);
 
     $diff->w = floor($diff->d / 7);
@@ -160,6 +164,19 @@ if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on')
 	}
 	
 	return $link . $_SERVER['SERVER_NAME']; 
+}
+
+function generateBitly($url){
+
+	$arr_result = file_get_contents('https://api-ssl.bitly.com/v3/shorten?longUrl=' . urlencode($url) . '&access_token=' . _BITLY_TOKEN);	
+	$arr_response = json_decode($arr_result);	
+
+	if(!isset($arr_response->data->url)){
+		return($url);
+	}else{
+		return $arr_response->data->url;
+	}
+	
 }
 
 
