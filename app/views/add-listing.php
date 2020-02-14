@@ -15,20 +15,33 @@ class addListing extends \myReef\views\view{
 			jQuery('#summary-count').html(x + " remaining");
 		}
 		
+		var checkPrice = function(){
+			
+			if(jQuery('#pricing-type').val() != "Fixed"){
+				jQuery('#price').val(jQuery('#pricing-type').val());
+				jQuery('#price').parent().parent().parent().hide();
+			}else{
+				jQuery('#price').val("0.00");
+				jQuery('#price').parent().parent().parent().show();
+			}
+				
+		}
+		
 		jQuery( document ).ready(function(){
 			
 			jQuery('#summary').bind('input propertychange', function() {
 				checkLength();
 			});
 
-			
 			checkLength();
+			checkPrice();
 			
 			 jQuery('#price').on('input', function () {
 				this.value = this.value.match(/^\d+\.?\d{0,2}/);
 			});
 			
 			jQuery('#price').on('focusout', function () {
+				if(jQuery('#price').val() == "") jQuery('#price').val("0.00");
 				jQuery('#price').val(parseFloat(jQuery('#price').val()).toFixed(2));
 			});	
 
@@ -43,6 +56,11 @@ class addListing extends \myReef\views\view{
 			   $(e.target).removeClass("invalid")
 			}, true);
 			
+			jQuery('#pricing-type').change(function(){
+				
+				checkPrice();
+				
+			});
 			
 		});
 		
@@ -163,7 +181,7 @@ class addListing extends \myReef\views\view{
 							  <label class="col-lg-12 control-label" for="type">Status *</label>
 							  <label class="col-lg-12 control-hint">Status of your listing, you can change this at a later date.</label>
 							  <div class="col-lg-12">
-								<select required="" id="selectbasic" name="status" class="form-control">
+								<select autocomplete="false" required="" id="selectbasic" name="status" class="form-control">
 								  <option <?php e($this->isEdit() && $this->listing->type == "For Sale" ? "selected" : ""); ?> value="For Sale">For Sale</option>
 								  <option <?php e($this->isEdit() && $this->listing->type == "Pending Collection" ? "selected" : ""); ?> value="Pending Collection">Pending Collection</option>
 								  <option <?php e($this->isEdit() && $this->listing->type == "Sold" ? "selected" : ""); ?> value="Sold">Sold</option>
@@ -175,7 +193,7 @@ class addListing extends \myReef\views\view{
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="type">Type *</label>
 							  <div class="col-lg-12">
-								<select required="" id="selectbasic" name="type" class="form-control">
+								<select autocomplete="false" required="" id="selectbasic" name="type" class="form-control">
 								  <option <?php e($this->isEdit() && $this->listing->type == "Coral SPS" ? "selected" : ""); ?> value="Coral SPS">Coral SPS</option>
 								  <option <?php e($this->isEdit() && $this->listing->type == "Coral LPS" ? "selected" : ""); ?> value="Coral LPS">Coral LPS</option>
 								  <option <?php e($this->isEdit() && $this->listing->type == "Coral Soft" ? "selected" : ""); ?> value="Coral Soft">Coral Soft</option>
@@ -199,17 +217,9 @@ class addListing extends \myReef\views\view{
 							  <input required="" id="textinput" name="title" type="text" placeholder="Title describing your listing" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->title : ""); ?>">
 							  </div>
 							</div>
-							
-						
-
-							<!-- Text input-->
-							<div class="form-group">
-							  <label class="col-lg-12 control-label" for="name">Sellers Name *</label>  
-							  <div class="col-lg-12">
-							  <input required="" id="textinput" name="name" type="text" placeholder="Your name" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->name : userName()); ?>">
-							  </div>
-							</div>
-							
+											
+							<input required="" id="textinput" name="name" type="hidden" placeholder="Your name" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->name : userName()); ?>">
+							 
 							<!-- Text input-->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="name">Contact Details *</label>  
@@ -252,6 +262,19 @@ class addListing extends \myReef\views\view{
 							  </div>
 							</div>
 
+							<div class="form-group">
+							  <label class="col-lg-12 control-label" for="type">Pricing *</label>
+							  <label class="col-lg-12 control-hint">How are you pricing your listing.</label>
+							  <div class="col-lg-12">
+								<select autocomplete="false" required="" id="pricing-type" name="pricing-type" class="form-control">
+								  <option <?php e($this->isEdit() && $this->listing->price == "Fixed" ? "selected" : ""); ?> value="Fixed">Fixed Price</option>
+								  <option <?php e($this->isEdit() && $this->listing->price == "Various" ? "selected" : ""); ?> value="Various">Various Prices</option>
+								  <option <?php e($this->isEdit() && $this->listing->price == "Free" ? "selected" : ""); ?> value="Free">Free</option>
+								  <option <?php e($this->isEdit() && $this->listing->price == "Open to Offers" ? "selected" : ""); ?> value="Open to Offers">Open to Offers</option>								  
+								</select>
+							  </div>
+							</div>								
+							
 							<!-- Button Drop Down -->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="price">Price *</label>
