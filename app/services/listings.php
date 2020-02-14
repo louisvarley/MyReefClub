@@ -20,8 +20,6 @@ class listings extends \myReef\services\service{
 			array_push($listings,$i);
 		}
 		
-		if(!empty($filter['limit'])) $listings = array_slice($listings,0,$filter['limit']);
-		
 		if(!empty($filter)){
 			
 	
@@ -46,6 +44,8 @@ class listings extends \myReef\services\service{
 				}
 			}
 		}
+		
+		if(!empty($filter['limit'])) $listings = array_slice($listings,0,$filter['limit']);		
 		
 		$created = array_column($listings, 'created');
 		array_multisort($created, SORT_DESC, $listings);
