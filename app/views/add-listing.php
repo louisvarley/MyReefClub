@@ -20,8 +20,30 @@ class addListing extends \myReef\views\view{
 			jQuery('#summary').bind('input propertychange', function() {
 				checkLength();
 			});
+
 			
 			checkLength();
+			
+			 jQuery('#price').on('input', function () {
+				this.value = this.value.match(/^\d+\.?\d{0,2}/);
+			});
+			
+			jQuery('#price').on('focusout', function () {
+				jQuery('#price').val(parseFloat(jQuery('#price').val()).toFixed(2));
+			});	
+
+			var delay = 0;
+			var offset = 150;
+
+			document.addEventListener('invalid', function(e){
+			   $(e.target).addClass("invalid");
+			   $('html, body').animate({scrollTop: $($(".invalid")[0]).offset().top - offset }, delay);
+			}, true);
+			document.addEventListener('change', function(e){
+			   $(e.target).removeClass("invalid")
+			}, true);
+			
+			
 		});
 		
 		jQuery( document ).ready(function(){
@@ -136,14 +158,6 @@ class addListing extends \myReef\views\view{
 								<input id="textinput" name="guid" type="hidden" value="<?php echo $this->listing->guid ?>">
 							<?php } ?>
 							
-							<!-- Text input-->
-							<div class="form-group">
-							  <label class="col-lg-12 control-label" for="title">Listing Title *</label>  
-							  <div class="col-lg-12">
-							  <input required="" id="textinput" name="title" type="text" placeholder="Title describing your listing" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->title : ""); ?>">
-							  </div>
-							</div>
-							
 							<!-- Select Basic -->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="type">Status *</label>
@@ -155,36 +169,8 @@ class addListing extends \myReef\views\view{
 								  <option <?php e($this->isEdit() && $this->listing->type == "Sold" ? "selected" : ""); ?> value="Sold">Sold</option>
 								</select>
 							  </div>
-							</div>							
-
-							<!-- Text input-->
-							<div class="form-group">
-							  <label class="col-lg-12 control-label" for="name">Name *</label>  
-							  <div class="col-lg-12">
-							  <input required="" id="textinput" name="name" type="text" placeholder="Your name" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->name : userName()); ?>">
-							  </div>
-							</div>
+							</div>	
 							
-							<!-- Text input-->
-							<div class="form-group">
-							  <label class="col-lg-12 control-label" for="name">Contact *</label>  
-							  <label class="col-lg-12 control-hint">How should potential buyers contact you?</label>
-							  <label class="col-lg-12 control-hint">You could include an email, a mobile number, a link to your facebook profile, or ask the user to find you on a facebook group</label>
-							  <div class="col-lg-12">
-							  <input required="" id="textinput" name="contact" type="text" placeholder="Example: I'm on Essex Reef Group" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->contact : ""); ?>">
-							  </div>
-							</div>							
-
-							<!-- Text input-->
-							<div class="form-group">
-							  <label class="col-lg-12 control-label" for="location">Location *</label>  
-							  <label class="col-lg-12 control-hint">We will provide a map of your location using this information.</label>
-							  <div class="col-lg-12">
-							  <input required="" id="textinput" name="location" type="text" placeholder="Where can this listing be collected" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->location : ""); ?>">
-								
-							  </div>
-							</div>
-
 							<!-- Select Basic -->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="type">Type *</label>
@@ -204,14 +190,56 @@ class addListing extends \myReef\views\view{
 							  </div>
 							</div>
 
+							<div class="divider"></div>
+							
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-lg-12 control-label" for="title">Listing Title *</label>  
+							  <div class="col-lg-12">
+							  <input required="" id="textinput" name="title" type="text" placeholder="Title describing your listing" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->title : ""); ?>">
+							  </div>
+							</div>
+							
+						
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-lg-12 control-label" for="name">Sellers Name *</label>  
+							  <div class="col-lg-12">
+							  <input required="" id="textinput" name="name" type="text" placeholder="Your name" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->name : userName()); ?>">
+							  </div>
+							</div>
+							
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-lg-12 control-label" for="name">Contact Details *</label>  
+							  <label class="col-lg-12 control-hint">How should potential buyers contact you?</label>
+							  <label class="col-lg-12 control-hint">You could include an email, a mobile number, a link to your facebook profile, or a facebook group</label>
+							  <div class="col-lg-12">
+							  <input required="" id="textinput" name="contact" type="text" placeholder="Example: I'm on Essex Reef Group" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->contact : ""); ?>">
+							  </div>
+							</div>							
+
+							<!-- Text input-->
+							<div class="form-group">
+							  <label class="col-lg-12 control-label" for="location">Location *</label>  
+							  <label class="col-lg-12 control-hint">We will provide a map of your location using this information. You can use a town or postcode.</label>
+							  <div class="col-lg-12">
+							  <input required="" id="textinput" name="location" type="text" placeholder="Where can this listing be collected" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->location : ""); ?>">
+								
+							  </div>
+							</div>
+
+							<div class="divider"></div>							
+
 							<!-- Textarea -->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="description">Summary *</label>
-							  <label class="col-lg-12 control-hint">Provide a short summary of what you have for sale.</label>
+							  <label class="col-lg-12 control-hint">Provide a short summary of what you have for sale. This is shown on the page containing all listings</label>
 							  <span id="summary-count" class="col-lg-12">120 Remaining</span>
 							  
 							  <div class="col-lg-12">                     
-								<textarea maxlegth="120" required="" rows="4" class="form-control" id="summary" name="summary"><?php e($this->isEdit() ? $this->listing->summary : ""); ?></textarea>
+								<textarea style="height:100px" maxlegth="120" required="" rows="4" class="form-control" id="summary" name="summary"><?php e($this->isEdit() ? $this->listing->summary : ""); ?></textarea>
 							  </div>
 							</div>							
 							
@@ -229,12 +257,14 @@ class addListing extends \myReef\views\view{
 							  <label class="col-lg-12 control-label" for="price">Price *</label>
 							  <div class="col-lg-12">
 								<div class="input-group">
-								  <input required="" id="appendedtext" name="price" class="form-control" placeholder="10.00" type="text" value="<?php e($this->isEdit() ? $this->listing->price : ""); ?>">
 								  <span class="input-group-addon">£</span>
+								  <input required="" id="price" name="price" class="form-control" placeholder="10.00" type="text" value="<?php e($this->isEdit() ? $this->listing->price : ""); ?>">
 								</div>
 								
 							  </div>
 							</div>
+							
+							<div class="divider"></div>
 
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="files[]">Images</label>
@@ -247,6 +277,8 @@ class addListing extends \myReef\views\view{
 							  </div>
 							</div>
 
+							<div class="divider"></div>
+							
 							<div class="form-group">
 							 <label class="col-lg-12 control-label"><h4>By submitting your listing, you are agreeing that you have read and fully agree to our <a href="/terms-of-service">Terms of Service</a></h4></label>
 							</div>

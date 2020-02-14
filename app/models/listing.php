@@ -100,4 +100,13 @@ class listing extends \myReef\models\model{
 		}
 	}
 	
+	function getMainImage(){
+		
+		if(isset($this->images[0])){
+			return $this->images[0];
+		}else{
+			return _DEFAULT_IMAGE;
+		}
+	}
+	
 }

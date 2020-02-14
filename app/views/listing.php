@@ -143,7 +143,7 @@ class listing extends \myReef\views\view{
 				<div class="sidebar">
 				
 
-					<div class="widget status text-center">
+					<div class="widget status text-center status-<?php echo dashesToCamelCase($this->listing->status); ?>">
 						<p><?php echo $this->listing->status; ?></p>
 					</div>	
 					
@@ -155,10 +155,17 @@ class listing extends \myReef\views\view{
 				
 					<div class="widget text-center">
 					  <div class="fb-share-button" 
-						data-href="<?php echo currentURL() ?>" 
+						data-href="<?php echo $this->listing->bitly ?>" 
 						data-layout="button">
 					  </div>
+					  
+					  <a target="_BLANK" href="http://twitter.com/share?text=<?php echo urlencode("For sale on MyReef.Club, " . $this->listing->title) ?>&url=<?php echo urlencode($this->listing->bitly); ?>&hashtags=myreefclub,reefing,reefers"><button class="btn btn-info btn-tiny btn-twitter"><i class="fab fa-twitter-square"></i>Tweet</button></a>
+					  					  
 					  <button id="modalLink" class="btn btn-info btn-tiny"><i class="fa fa-file"></i>Copy Link</button>
+					  
+		
+					  
+					  
 					  <input type="text" value="" id="hidden-copy-url">
 					</div>					
 					<div class="widget price text-center">

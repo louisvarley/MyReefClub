@@ -22,10 +22,9 @@ class listingBox extends \myReef\views\view{
 					<div class="thumb-content">
 						<div class="price">£ <?php echo e($this->listing->price) ?></div>
 						<div class="type"><?php echo e($this->listing->type) ?></div>
-						<div class="status"><?php echo e($this->listing->status) ?></div>
+						<div class="status status-<?php echo dashesToCamelCase($this->listing->status); ?>"><?php echo e($this->listing->status) ?></div>
 						<a href="<?php echo $this->listing->url ?>">
-							<div class="thumb-img" style="background-image: url('<?php echo $this->listing->images[0] ?>');"></div>
-							<!--<img class="card-img-top img-fluid" src="<?php echo $this->listing->images[0] ?>" alt="Card image cap">-->
+							<div class="thumb-img" style="background-image: url('<?php echo $this->listing->getMainImage() ?>');"></div>
 						</a>
 					</div>
 					<div class="card-body">

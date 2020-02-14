@@ -261,28 +261,40 @@ textarea.form-control {
   height: 200px;
 }
 
+.invalid{
+	border-color:#fc0317;
+}
+
 .form-control::-webkit-input-placeholder {
-  color: #666;
+  color: #c7c6c3;
 }
 
 /* WebKit, Blink, Edge */
 .form-control:-moz-placeholder {
-  color: #666;
+  color: #c7c6c3;
 }
 
 /* Mozilla Firefox 4 to 18 */
 .form-control::-moz-placeholder {
-  color: #666;
+  color: #c7c6c3;
 }
 
 /* Mozilla Firefox 19+ */
 .form-control:-ms-input-placeholder {
-  color: #666;
+  color: #c7c6c3;
 }
 
 /* Internet Explorer 10-11 */
 .form-control::-ms-input-placeholder {
-  color: #666;
+  color: #c7c6c3;
+}
+
+.form-control:focus{
+	border-color:#0d53a9;
+}
+
+.form-control.invalid:focus{
+	border-color:#fc0317;
 }
 
 /* Microsoft Edge */
@@ -525,6 +537,10 @@ button {
 
 .btn-tiny svg{
 	margin-right:5px;
+}
+
+.btn-twitter{
+	background-color: #0084b4 !important
 }
 
 #hidden-copy-url{
@@ -2611,6 +2627,25 @@ article.single-post p {
 	margin-left:20px;
 }
 
+.status-sold{
+	background-color: #666 !important;
+}
+
+.status-pendingCollection{
+	background-color: #0d53a9 !important;
+}
+
+.status-forSale{
+	background-color: #0fa34d !important;
+}
+
+.divider{
+	border-bottom: 3px solid #b8d5f9;
+	margin-top:50px;
+	margin-bottom:50px;
+	height:10px;
+	width:100%;
+}
 
 
 /*# sourceMappingURL=maps/style.css.map */
