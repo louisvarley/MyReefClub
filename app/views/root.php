@@ -46,7 +46,17 @@ class root extends \myReef\views\view{
 					 } 	
 				 } ?>
 				</div>
+				
+				<div class="row">
+					<div class="col-md-12">
+						<p><a href="/browse-listings"><button class="btn btn-success">View All Listings</button></a></p>
+					</div>
+				</div>
+				
+				
 			</div>
+			
+			
 		</section>
 
 
