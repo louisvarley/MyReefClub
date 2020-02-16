@@ -60,7 +60,7 @@ class page{
 			'og:type' => (isset($this->controller->type) ? $this->controller->type : "website"),
 			'og:title' => (isset($this->controller->title) ? $this->controller->title : _DEFAULT_TITLE),
 			'og:description' => (isset($this->controller->description) ? $this->controller->description : _DEFAULT_DESCRIPTION),
-			'og:image' => (isset($this->controller->images) ? $this->controller->images : baseURL() . _DEFAULT_IMAGE),
+			'og:image' => (isset($this->controller->image) ? $this->controller->image : baseURL() . _DEFAULT_IMAGE),
 		));		
 				
 		

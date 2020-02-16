@@ -46,7 +46,9 @@ function redirect($url)
 /* URL Parts */
 function parts()
 {
-	return explode('/',$_SERVER['REQUEST_URI']);
+	
+	$base = explode("?",$_SERVER['REQUEST_URI'])[0];
+	return explode('/',$base);
 }
 
 function getClientIP()
