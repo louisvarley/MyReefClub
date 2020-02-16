@@ -27,7 +27,7 @@ class view{
 		  
 
 		  <!-- Bootstrap -->
-		  <link href="<?php echo _LIBS; ?>bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+		  <link href="<?php echo _LIBS; ?>bootstrap/dist/css/bootstrap.css" rel="stylesheet">
 		  <!-- Font Awesome -->
 		  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet">
 

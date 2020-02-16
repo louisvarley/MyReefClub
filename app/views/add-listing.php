@@ -183,6 +183,7 @@ class addListing extends \myReef\views\view{
 							  <div class="col-lg-12">
 								<select autocomplete="false" required="" id="selectbasic" name="status" class="form-control">
 								  <option <?php e($this->isEdit() && $this->listing->type == "For Sale" ? "selected" : ""); ?> value="For Sale">For Sale</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Reduced Price" ? "selected" : ""); ?> value="For Sale">Reduced Price</option>								  
 								  <option <?php e($this->isEdit() && $this->listing->type == "Pending Collection" ? "selected" : ""); ?> value="Pending Collection">Pending Collection</option>
 								  <option <?php e($this->isEdit() && $this->listing->type == "Sold" ? "selected" : ""); ?> value="Sold">Sold</option>
 								</select>
@@ -201,6 +202,8 @@ class addListing extends \myReef\views\view{
 								  <option <?php e($this->isEdit() && $this->listing->type == "Fish" ? "selected" : ""); ?> value="Fish">Fish</option>
 								  <option <?php e($this->isEdit() && $this->listing->type == "Invert" ? "selected" : ""); ?> value="Invert">Invert</option>
 								  <option <?php e($this->isEdit() && $this->listing->type == "Tank Breakdown" ? "selected" : ""); ?> value="Tank Breakdown">Tank Breakdown</option>
+								  <option <?php e($this->isEdit() && $this->listing->type == "Complete Setup" ? "selected" : ""); ?> value="Complete Setup">Complete Setup</option>	
+								  <option <?php e($this->isEdit() && $this->listing->type == "Live Rock" ? "selected" : ""); ?> value="Live Rock">Live Rock</option>							  
 								  <option <?php e($this->isEdit() && $this->listing->type == "Various" ? "selected" : ""); ?> value="Various">Various</option>
 								  <option <?php e($this->isEdit() && $this->listing->type == "Service" ? "selected" : ""); ?> value="Service">Service</option>
 								  <option <?php e($this->isEdit() && $this->listing->type == "Sundries" ? "selected" : ""); ?> value="Sundries">Sundries</option>
