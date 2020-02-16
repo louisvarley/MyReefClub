@@ -8,8 +8,8 @@ class listings extends \myReef\services\service{
 		
 		$listings = [];
 		
+		/* Blank Result Set */
 		$listingResults = new \myReef\models\listingResults();
-		
 		
 		$files = glob(_LISTINGS_DIR . '*.json', GLOB_BRACE);
 		foreach($files as $file) {
@@ -45,11 +45,12 @@ class listings extends \myReef\services\service{
 			}
 		}
 		
-		if(!empty($filter['limit'])) $listings = array_slice($listings,0,$filter['limit']);		
-		
+
 		$created = array_column($listings, 'created');
 		array_multisort($created, SORT_DESC, $listings);
-		
+
+		if(!empty($filter['limit'])) $listings = array_slice($listings,0,$filter['limit']);		
+				
 		$listingResults->results = $listings;
 		$listingResults->count = count($listings);
 		$listingResults->empty = empty($listings);
