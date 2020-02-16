@@ -5,6 +5,13 @@ body {
   font-family: "Muli", sans-serif;
 }
 
+html, body {
+  overflow-x: hidden;
+}
+body {
+  position: relative
+}
+
 p, li, input, select, button {
   font-family: "Muli", sans-serif;
   color: #666;
@@ -1724,6 +1731,12 @@ ul.pagination .active a {
   color: #fff;
 }
 
+.modal-body {
+    position: relative;
+    overflow-y: auto;
+    max-height: 400px;
+    padding: 15px;
+}
 
 .widget.price p {
   color: #fff;
@@ -2586,6 +2599,7 @@ article.single-post p {
 .top-to {
   position: absolute;
   right: 20px;
+  cursor: pointer;
   bottom: 50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2595,10 +2609,11 @@ article.single-post p {
           justify-content: center;
 }
 
-.top-to a {
+.top-to span {
   width: 40px;
   height: 40px;
   background: #0d53a9;
+  padding-top: 11px;
   color: #fff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -2608,11 +2623,11 @@ article.single-post p {
           justify-content: center;
 }
 
-.top-to a i {
+.top-to span i {
   line-height: 40px;
 }
 
-.top-to a:hover {
+.top-to span:hover {
   text-decoration: none;
 }
 
