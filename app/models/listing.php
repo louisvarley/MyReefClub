@@ -40,7 +40,7 @@ class listing extends \myReef\models\model{
 		
 		$data = (object) json_decode($json);	
 		$this->guid = (!isset($data->guid) ? guid() : $data->guid);
-		$this->created = (!isset($data->created) ? time() : $data->created);
+		$this->created = (!empty($data->created) ? $data->created : time());
 		$this->createdIP = (!isset($data->ipAddress) ? getClientIP() : $data->ipAddress); 
 		$this->title = (!empty($data->title) ? $data->title : "");
 		$this->name = (!empty($data->name) ? $data->name : "");

@@ -37,12 +37,14 @@ class addListing extends \myReef\controllers\controller{
 			$listing->load($data['guid']);
 			if($data['images'] == '[]') $data['images'] = $listing->images;
 			$data['user'] = $listing->user;
+			$data['created'] = $listing->created;	
+			$data['createdIP'] = $listing->createdIP;				
 			
 		}
 		
 		/* Encode Data */
 		$data = json_encode($data);	
-		
+
 		/* Generate Listing from JSON */
 		$this->listing = new \myReef\models\listing($data);
 		
