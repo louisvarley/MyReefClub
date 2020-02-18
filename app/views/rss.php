@@ -5,8 +5,8 @@ namespace myReef\views;
 class rss {
 	
 	function content(){
+	echo '<?xml version="1.0" encoding="utf-8"?>';
 	?>			
-	<?xml version="1.0" encoding="ISO-8859-1"?>
 	<rss version="2.0">
 		<channel>
 			<title>My RSS feed</title>
@@ -18,22 +18,19 @@ class rss {
 				<?php foreach($this->listings->results as $listing) { ?>
 				<item>
 					<title><?php e($listing->title) ?></title>
-					<description><?php e($listing->summary) ?></description>
+					<description>
+					<![CDATA[<img align="left" hspace="5" src="<?php echo(isset($listing->images[0]) ? baseURL() . $listing->images[0] : baseURL() . _DEFAULT_IMAGE);	 ?>"/>
+					<?php e($listing->summary) ?>'... <br />]]>
+					</description>				
 					<link><?php echo baseURL() . ($listing->url) ?></link>			
-					<pubDate>Mon, 23 Feb 2009 09:27:16 +0000</pubDate>
-					<image>
-						<url><?php echo(isset($listing->images[0]) ? baseURL() . $listing->images[0] : baseURL() . _DEFAULT_IMAGE);	 ?></url>
-						<title><?php e($listing->title) ?></title>
-						<link><?php echo baseURL() . ($listing->url) ?></link>
-					</image>
+					<pubDate><?php echo rssStamp($listing->created) ?></pubDate>
+					<media:content url="<?php echo(isset($listing->images[0]) ? baseURL() . $listing->images[0] : baseURL() . _DEFAULT_IMAGE);	 ?>" width="800" medium="image" />
 				</item>
 				<?php } ?>
 			<?php } ?>
 		</channel>
 	</rss>		
-		
-
-			<?php
+	<?php
 			
 		}
 		

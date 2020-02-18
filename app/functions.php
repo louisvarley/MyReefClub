@@ -143,6 +143,12 @@ function timeElapsed($timestamp, $full = false) {
     return $string ? implode(', ', $string) . ' ago' : 'just now';
 }
 
+
+function rssStamp($timestamp, $full = false) {
+	
+    return date('r', $timestamp);
+}
+
 function currentURL(){
 	
 	if(isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on') 
