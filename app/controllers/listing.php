@@ -12,12 +12,16 @@ class listing extends \myReef\controllers\controller{
 		/* Extract GUID */
 		$this->guid = parts()[3];
 		
+		/* Load Listing */
 		$this->view->listing = \myReef\services\listings::getListing($this->guid);
 		
 		if(!$this->view->listing->found){
 			redirect("listing-not-found");
 		}
 		
+		/* New Listing View */
+		\myReef\services\listings::viewedListing($this->guid);
+					
 		/* Set the Meta for this page */
 		$this->title = $this->view->listing->title;
 		$this->description = $this->view->listing->description;

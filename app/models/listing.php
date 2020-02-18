@@ -54,15 +54,26 @@ class listing extends \myReef\models\model{
 		$this->price  = (!empty($data->price) ? $data->price : "");
 		$this->description  = (!empty($data->description) ? $data->description : "");	
 		$this->images = (!empty($data->images) ? ( is_array($data->images) ? $data->images : json_decode($data->images) ) : []);
-		$this->url = "/listing/" . str_replace("+","-",urlencode($this->title)) . '/' . $this->guid;		
+		$this->url = "/listing/" . str_replace("+","-",urlencode($this->title)) . '/' . $this->guid;
+		$this->views = $this->getViews();
+		
 	}
 	
 	private function loadFromJSON($json){
 		
-		$data = (object) json_decode($json);		
+		$data = (object) json_decode($json);
 		$this->newFromJSON($json);
 	}
-
+	
+	function getViews(){
+		
+		if(!isset($this->guid)) return 0;
+		
+		$i = new \myReef\models\listingViews($this->guid);
+					
+		return $i->getViews();
+		
+	}
 	
 	/* Save, provide your user id to verify */
 	function save(){

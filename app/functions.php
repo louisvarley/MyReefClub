@@ -184,4 +184,29 @@ function generateBitly($url){
 	
 }
 
+function stringToColor($str) {
+	
+  $code = dechex(crc32($str));
+  $code = substr($code, 0, 6);
+  return "#" . $code;
+}
+
+
+function isFloat($v){
+	
+	return preg_match('/^[0-9]*\.[0-9]+$/', $v);
+}
+
+
+function price($str){
+	
+	if(isfloat($str))
+	{
+		return "£" . $str;
+	}	else {
+		return $str;
+	}
+	
+}
+
 

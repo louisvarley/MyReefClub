@@ -183,7 +183,7 @@ class addListing extends \myReef\views\view{
 							  <div class="col-lg-12">
 								<select autocomplete="false" required="" id="selectbasic" name="status" class="form-control">
 								  <option <?php e($this->isEdit() && $this->listing->type == "For Sale" ? "selected" : ""); ?> value="For Sale">For Sale</option>
-								  <option <?php e($this->isEdit() && $this->listing->type == "Reduced Price" ? "selected" : ""); ?> value="For Sale">Reduced Price</option>								  
+								  <option <?php e($this->isEdit() && $this->listing->type == "Reduced Price" ? "selected" : ""); ?> value="Reduced Price">Reduced Price</option>								  
 								  <option <?php e($this->isEdit() && $this->listing->type == "Pending Collection" ? "selected" : ""); ?> value="Pending Collection">Pending Collection</option>
 								  <option <?php e($this->isEdit() && $this->listing->type == "Sold" ? "selected" : ""); ?> value="Sold">Sold</option>
 								</select>

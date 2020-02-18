@@ -1453,7 +1453,7 @@ ul.pagination .active a {
   color: #fff;
   display: inline-block;
   padding: 4px 8px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .product-item .thumb-content .type {
@@ -1466,7 +1466,7 @@ ul.pagination .active a {
   color: #fff;
   display: inline-block;
   padding: 4px 8px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .product-item .thumb-content .status {
@@ -1479,7 +1479,7 @@ ul.pagination .active a {
   color: #fff;
   display: inline-block;
   padding: 4px 8px;
-  font-size: 12px;
+  font-size: 15px;
 }
 
 .product-item .product-meta {
@@ -2653,6 +2653,11 @@ article.single-post p {
 .status-forSale{
 	background-color: #0fa34d !important;
 }
+
+.status-reducedPrice{
+	background-color: #e80e24 !important;	
+}
+
 
 .divider{
 	border-bottom: 3px solid #b8d5f9;

@@ -10,8 +10,10 @@ define('_LIBS',_STATIC . 'libs/');
 define('_APP',_STATIC . 'app/');
 define('_UPLOADS_DIR',_PATH_ROOT . 'uploads/');
 define('_UPLOADS_URL',_URL_ROOT . 'uploads/');
-define('_LISTINGS_DIR',_PATH_ROOT . 'listings/');
-define('_LISTINGS_URL',_URL_ROOT . 'listings/');
+define('_LISTINGS_DIR',_PATH_ROOT . 'json/listings/');
+define('_LISTING_VIEWS_DIR',_PATH_ROOT . 'json/views/');
+
+define('_LISTINGS_URL',_URL_ROOT . 'json/listings/');
 define('_BITLY_TOKEN','7101635087a3fc1d3d977b34da94926f35dba436');
 
 define('_DEFAULT_TITLE','MyReef Club | Sales and Swap Listings');

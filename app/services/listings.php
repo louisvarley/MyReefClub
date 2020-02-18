@@ -70,4 +70,14 @@ class listings extends \myReef\services\service{
 		return $i;
 	}
 
+	public static function viewedListing($guid){
+		
+		$i = new \myReef\models\listingViews($guid);
+		$i->increment();
+		
+		return $i->getViews();
+			
+		
+	}
+	
 }

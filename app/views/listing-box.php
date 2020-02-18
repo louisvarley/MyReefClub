@@ -20,8 +20,8 @@ class listingBox extends \myReef\views\view{
 			<div class="product-item bg-light">
 				<div class="card">
 					<div class="thumb-content">
-						<div class="price">£ <?php echo e($this->listing->price) ?></div>
-						<div class="type"><?php echo e($this->listing->type) ?></div>
+						<div class="price"> <?php e(price($this->listing->price)) ?></div>
+						<div class="type" style="background-color:<?php echo stringToColor(($this->listing->type)); ?>"><?php echo e($this->listing->type) ?></div>
 						<div class="status status-<?php echo dashesToCamelCase($this->listing->status); ?>"><?php echo e($this->listing->status) ?></div>
 						<a href="<?php echo $this->listing->url ?>">
 							<div class="thumb-img" style="background-image: url('<?php echo $this->listing->getMainImage() ?>');"></div>

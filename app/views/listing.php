@@ -88,8 +88,10 @@ class listing extends \myReef\views\view{
 					<div class="product-meta">
 						<ul class="list-inline">
 							<li class="list-inline-item"><i class="fa fa-user"></i> By <a href=""><?php e($this->listing->name) ?></a></li>
+							<li class="list-inline-item"><i class="fa fa-clock"></i> Added <?php echo timeElapsed($this->listing->created); ?></a></li>
 							<li class="list-inline-item"><i class="fa fa-folder"></i> Category<a href=""><?php e($this->listing->type) ?></a></li>
 							<li class="list-inline-item"><i class="fa fa-home"></i> Location<a href=""><?php e($this->listing->location) ?></a></li>
+							<li class="list-inline-item"><i class="fa fa-eye"></i> Views<a href=""><?php e($this->listing->views) ?></a></li>							
 						</ul>
 					</div>
 					<?php if(isset($this->listing->images[0])){ ?>
@@ -142,35 +144,30 @@ class listing extends \myReef\views\view{
 			<div class="col-md-4">
 				<div class="sidebar">
 				
-
+					<!-- Status -->
 					<div class="widget status text-center status-<?php echo dashesToCamelCase($this->listing->status); ?>">
 						<p><?php echo $this->listing->status; ?></p>
 					</div>	
 					
 					<?php if(userID() == $this->listing->user){ ?>
+					<!-- Edit Listing -->
 					<div class="widget text-center">
 						<p><a href="/add-listing/<?php echo $this->listing->guid ?>"><button class="btn btn-success">Edit Listing</button></a></p>
 					</div>							
 					<?php } ?>				
 				
+					<!-- Social Share -->
 					<div class="widget text-center">
-					  <div class="fb-share-button" 
-						data-href="<?php echo $this->listing->bitly ?>" 
-						data-layout="button">
-					  </div>
-					  
-					  <a target="_BLANK" href="http://twitter.com/share?text=<?php echo urlencode("For sale on MyReef.Club, " . $this->listing->title) ?>&url=<?php echo urlencode($this->listing->bitly); ?>&hashtags=myreefclub,reefing,reefers"><button class="btn btn-info btn-tiny btn-twitter"><i class="fab fa-twitter-square"></i>Tweet</button></a>
-					  					  
+					  <div class="fb-share-button" data-href="<?php echo $this->listing->bitly ?>" data-layout="button"></div>
+					  <a target="_BLANK" href="http://twitter.com/share?text=<?php echo urlencode("For sale on MyReef.Club, " . $this->listing->title) ?>&url=<?php echo urlencode($this->listing->bitly); ?>&hashtags=myreefclub,reefing,reefers"><button class="btn btn-info btn-tiny btn-twitter"><i class="fab fa-twitter-square"></i>Tweet</button></a>			  
 					  <button id="modalLink" class="btn btn-info btn-tiny"><i class="fa fa-file"></i>Copy Link</button>
-					  
-		
-					  
-					  
 					  <input type="text" value="" id="hidden-copy-url">
-					</div>					
+					</div>	
+					
+					<!-- Price -->
 					<div class="widget price text-center">
 						<h4>Price</h4>
-						<p>£<?php e($this->listing->price) ?></p>
+						<p><?php e(price($this->listing->price)); ?></p>
 					</div>											
 					<div class="widget map">
 						<div class="map">
@@ -180,6 +177,7 @@ class listing extends \myReef\views\view{
 						</div>
 					</div>
 
+					<!-- Seller Contact -->
 					<div class="widget text-center">
 						<p><button data-toggle="collapse" aria-expanded="false" data-target="#contact-seller" aria-controls="contact-seller" class="btn btn-primary">Contact Seller</button></p>
 						<div class="collapse" id="contact-seller">
