@@ -63,8 +63,7 @@ class view{
 		  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
 		  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/js/all.min.js"></script>
 		  <script src="https://connect.facebook.net/en_US/all.js"></script>  
-		  <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/unique-methods/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">window.dojoRequire(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us4.list-manage.com","uuid":"a7b2cb7b566a33ed74cd7ffad","lid":"44c9b590f4","uniqueMethods":true}) })</script>
-		
+
 		<?php if(method_exists($this,'inlineJS')){ ?><script><?php $this->inlineJS(); ?></script><?php } ?>
 		<?php if(method_exists($this,'inlineCSS')){ ?><script><?php $this->inlineCSS(); ?></script><?php } ?>
 		  
@@ -167,6 +166,29 @@ class view{
 			  <div class="col-lg-3 col-md-7 offset-md-1 offset-lg-0">
 				<!-- About -->
 				<div class="block about">
+				
+				<!-- Begin Mailchimp Signup Form -->
+				<link href="//cdn-images.mailchimp.com/embedcode/classic-10_7.css" rel="stylesheet" type="text/css">
+				<div id="mc_embed_signup" style="margin-bottom:10px;">
+				<form action="https://club.us4.list-manage.com/subscribe/post?u=a7b2cb7b566a33ed74cd7ffad&amp;id=44c9b590f4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+					<div id="mc_embed_signup_scroll">
+					<h2 style="font-size:14px; color:#fff">Notify Me Daily of New Listings</h2>
+				<div class="mc-field-group">
+					<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
+				</label>
+					<input type="email" value="" name="EMAIL" class="required email" id="mce-EMAIL">
+				</div>
+					<div id="mce-responses" class="clear">
+						<div class="response" id="mce-error-response" style="display:none;color:#fff;"></div>
+						<div class="response" id="mce-success-response" style="display:none;color:#fff;"></div>
+					</div>    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+					<div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_a7b2cb7b566a33ed74cd7ffad_44c9b590f4" tabindex="-1" value=""></div>
+					<div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+					</div>
+				</form>
+				</div>
+				<script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+				<!--End mc_embed_signup-->				
 				  <!-- footer logo -->
 				  <img src="<?php echo _IMAGES ?>logo-footer.png" alt="">
 				  <!-- description -->
