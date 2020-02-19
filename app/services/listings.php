@@ -34,10 +34,10 @@ class listings extends \myReef\services\service{
 					if(property_exists($lVal,$fvProp)){
 						if($fvComparison == "eq" && $lVal->$fvProp != $fvValue) unset($listings[$lKey]);
 						if($fvComparison == "neq" && $lVal->$fvProp == $fvValue) unset($listings[$lKey]);						
-						if($fvComparison == "gt" && $lVal->$fvProp > $fvValue) unset($listings[$lKey]);							
-						if($fvComparison == "lt" && $lVal->$fvProp < $fvValue) unset($listings[$lKey]);	
-						if($fvComparison == "lte" && $lVal->$fvProp <= $fvValue) unset($listings[$lKey]);							
-						if($fvComparison == "gte" && $lVal->$fvProp >= $fvValue) unset($listings[$lKey]);
+						if($fvComparison == "gt" && $lVal->$fvProp <= $fvValue) unset($listings[$lKey]);							
+						if($fvComparison == "lt" && $lVal->$fvProp >= $fvValue) unset($listings[$lKey]);	
+						if($fvComparison == "lte" && $lVal->$fvProp > $fvValue) unset($listings[$lKey]);							
+						if($fvComparison == "gte" && $lVal->$fvProp < $fvValue) unset($listings[$lKey]);
 						if($fvComparison == "nn" && !isset($lVal->$fvProp)) unset($listings[$lKey]);	
 						if($fvComparison == "in" && isset($lVal->$fvProp)) unset($listings[$lKey]);							
 					}
