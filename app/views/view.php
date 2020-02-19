@@ -173,7 +173,7 @@ class view{
 				<div id="mc_embed_signup" style="margin-bottom:10px;">
 				<form action="https://club.us4.list-manage.com/subscribe/post?u=a7b2cb7b566a33ed74cd7ffad&amp;id=44c9b590f4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
 					<div id="mc_embed_signup_scroll">
-					<h2 style="font-size:14px; color:#fff">Notify Me Daily of New Listings</h2>
+					<h2 style="font-size:14px; color:#fff">Notify Me Daily of New Listings and Important Updates</h2>
 				<div class="mc-field-group">
 					<label for="mce-EMAIL">Email Address  <span class="asterisk">*</span>
 				</label>
