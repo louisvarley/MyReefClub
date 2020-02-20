@@ -535,6 +535,20 @@ button {
   box-shadow: none;
 }
 
+.btn-faq:focus,.btn-faq:hover {
+	color: #0d53a9;
+	text-decoration: none;	  
+}
+
+.btn-faq{
+	color: #0d53a9;
+	text-decoration: none;
+}
+
+.card-header{
+	background-color: #efefef;
+}
+
 .btn-tiny{
 	height:20px;
 	font-size: 10px;

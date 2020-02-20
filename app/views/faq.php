@@ -28,7 +28,7 @@ class faq extends \myReef\views\view{
 								<div class="card">
 									<div class="card-header" id="heading<?php echo $n ?>">
 									  <h2 class="mb-0">
-										<button class="btn btn-link" type="button" data-toggle="collapse" data-target="#<?php echo $n ?>" aria-expanded="false" aria-controls="<?php echo $n ?>">
+										<button class="btn btn-link btn-faq" type="button" data-toggle="collapse" data-target="#<?php echo $n ?>" aria-expanded="false" aria-controls="<?php echo $n ?>">
 										  <?php echo $faq['title']; ?>
 										</button>
 									  </h2>

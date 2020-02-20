@@ -21,7 +21,7 @@ class rss {
 					<![CDATA[
 		<div style="width:100%;">
 			<div>
-				<div style="position: relative;display: -ms-flexbox;display: flex;-ms-flex-direction: column;flex-direction: column;min-width: 0;word-wrap: break-word;background-color:#fff;background-clip: border-box;border: 0px solid rgba(0, 0, 0, 0.125);border-radius: 0.25rem;">
+				<div style="position: relative; min-width: 0;word-wrap: break-word;background-color:#fff;background-clip: border-box;border: 0px solid rgba(0, 0, 0, 0.125);border-radius: 0.25rem;">
 					<div style="position:relative" style="text-align:center">
 						
 						<h4 style="margin-bottom:10px; text-align:center; font-size:24px; margin-bottom:5px; font-weight:600;"><a style="color:#0d53a9; text-decoration:none;" href="<?php echo $listing->url ?>"><?php echo e($listing->title); ?></a></h4>
@@ -36,11 +36,11 @@ class rss {
 						</a>
 					</div>
 					<div style="text-align:center; padding:20px; flex: 1 1 auto;">
-						<h5><?php echo timeElapsed($listing->created); ?> by <?php echo e($listing->name); ?> <?php echo e($listing->location); ?></h5>
+						<h5>Listed <?php echo timeElapsed($listing->created); ?> by <?php echo e($listing->name); ?>, <?php echo e($listing->location); ?></h5>
 						
 						<?php e($listing->summary); ?>
 						<a href="<?php echo $listing->url ?>">
-							<button style="margin-top:20px; width:100%; font-size: 15px;letter-spacing: 1px;display: inline-block;padding: 15px 30px;border-radius: 4px;	color:#fff;background-color:#0d53a9;border-color:#007bff;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;">View</button>	
+							<button style="margin-top:20px; width:50%; font-size: 15px;letter-spacing: 1px;display: inline-block;padding: 15px 30px;border-radius: 4px;	color:#fff;background-color:#0d53a9;border-color:#007bff;font-weight: 400;text-align: center;white-space: nowrap;vertical-align: middle;cursor: pointer;">View</button>	
 						</a>
 					</div>
 				</div>
