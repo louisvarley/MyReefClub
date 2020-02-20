@@ -6,11 +6,13 @@ class user{
 	
 	protected static $id;
 	protected static $name;
+	protected static $email;
 	
 	static function setUser($user){
 		
 		self::$id = $user->id;
 		self::$name = $user->name;
+		self::$email = $user->email;
 	}
 	
 	static function getID(){
@@ -21,6 +23,10 @@ class user{
 	static function getName(){
 		
 		return self::$name;
+	}
+	
+	static function getEmail(){
+		return self::$email;
 	}
 	
 	static function unsetUser(){

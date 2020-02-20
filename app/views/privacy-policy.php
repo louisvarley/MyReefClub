@@ -33,6 +33,7 @@ class privacyPolicy extends \myReef\views\view{
 							   <li>We retain the following information about users of our site:
 								   <ul class="i">
 									   <li><b>IP Address</b> which is used to keep track of the user posting a listing and for purposes of IP banning.</li>
+									   <li><b>Email Address</b> Saved against your listing and assists in allowing potential buyers to reach out to you.</li>
 									   <li><b>App user ID</b> which is a unique number assigned to you by facebook for our app.</li>
 									   <li><b>Your Name</b> which is used to pre-fill the name field on listing forms.</li>
 									   <li><b>Contact Link</b> You will provide a contact link, likley in the form a facebook profile link but maybe a mobile number or email address. These are not used by this website other than being displayed on your listing</li>									   

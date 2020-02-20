@@ -13,9 +13,16 @@ class controller{
 
 			if(!isset($user->name)){
 				unset($_COOKIE['fb_me']);
-				redirect("page-not-found");
+				error("Something went wrong logging you in, please try again");
 			}				
-					
+			
+			
+			if(!isset($user->email)){
+				unset($_COOKIE['fb_me']);
+				logout();
+				error("Something went wrong logging you in, please try again");
+			}				
+								
 			login($user);
 			
 		}else{

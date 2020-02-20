@@ -16,6 +16,12 @@ function userName(){
 	
 }
 
+function userEmail(){
+	
+	return \myReef\classes\user::getEmail();
+	
+}
+
 function userID(){
 	
 	return \myReef\classes\user::getID();
@@ -42,6 +48,14 @@ function redirect($url)
 	$url = "/" . ltrim($url,"/");
 	header("Location: $url");
 }
+
+/* Redirect */
+function error($message="")
+{
+	$url = "/" . "error&m=" + base64_encode($message);
+	header("Location: $url");
+}
+
 
 /* URL Parts */
 function parts()

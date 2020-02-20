@@ -18,7 +18,7 @@ jQuery( document ).ready(function() {
 			  if (response.authResponse) {
 				loadProfile();
 			  } 
-			});
+			},{'scope':'email'});
 		}
 		return false;
 	};
@@ -27,11 +27,11 @@ jQuery( document ).ready(function() {
 		
 		token = FB.getAccessToken();
 		
-		FB.api('/me', function(response) {
+		FB.api('/me', {fields: 'name,email'}, function(response) {
 			console.log(response);
 			setCookie("fb_me",JSON.stringify(response));
 			document.location.reload();			
-		});	
+		});
 	}
 
 	logout = function() {

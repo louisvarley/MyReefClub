@@ -75,7 +75,6 @@ class listing extends \myReef\views\view{
   </div>
 </div>		
 		
-		
 <section class="section bg-gray">
 	<!-- Container Start -->
 	<div class="container">
