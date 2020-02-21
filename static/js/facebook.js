@@ -30,18 +30,35 @@ jQuery( document ).ready(function() {
 		FB.api('/me', {fields: 'name,email'}, function(response) {
 			console.log(response);
 			setCookie("fb_me",JSON.stringify(response));
-			document.location.reload();			
+			document.location.reload();	
+			
 		});
 	}
 
 	logout = function() {
+		
 
 		clearCookie("fb_me");
-		document.location.reload();    
+		 
 		if (FB.getAuthResponse()) {
 			FB.logout();
 		}
+		document.location.reload();   
 	};
+	
+	sharePage = function(url = window.location.href){
+		FB.ui({
+			method: 'share_open_graph',
+		    app_id: '1078708442504913',			
+			display: 'popup',
+			action_type: 'og.posts',
+			  action_properties: JSON.stringify({
+				object:url,
+			  })
+		}, function(response){});
+				
+		
+	}
 
 	/* Facebook Loads */
 	window.fbAsyncInit = function() {
@@ -68,6 +85,7 @@ jQuery( document ).ready(function() {
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));		
 
+	
 		
 		
 			
@@ -92,6 +110,7 @@ function getCookie(name) {
     }
     return null;
 }
-function clearCookie(name) {   
-    document.cookie = name+'=; Max-Age=-99999999;';  
+function clearCookie(name) {  
+	setCookie(name,null,-1); 
+    //document.cookie = name+'=; Max-Age=-99999999;';  
 }

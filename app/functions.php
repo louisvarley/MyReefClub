@@ -30,6 +30,8 @@ function userID(){
 
 function logout(){
 	
+	unset($_COOKIE['fb_me']); 
+	setcookie('fb_me', null, -1, '/'); 
 	return \myReef\classes\user::unsetUser();
 		
 }

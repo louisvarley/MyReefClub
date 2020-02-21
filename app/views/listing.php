@@ -12,13 +12,6 @@ class listing extends \myReef\views\view{
 			
 	
 		?>
-		(function(d, s, id) {
-		var js, fjs = d.getElementsByTagName(s)[0];
-		if (d.getElementById(id)) return;
-		js = d.createElement(s); js.id = id;
-		js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-		fjs.parentNode.insertBefore(js, fjs);
-		}(document, 'script', 'facebook-jssdk'));
 		
 		jQuery( document ).ready(function(){
 			
@@ -34,6 +27,12 @@ class listing extends \myReef\views\view{
 				jQuery(this).html(jQuery(this).html().replace("Copy Link","Copied.."));			
 			});			
 			
+		})
+		
+		jQuery( document ).ready(function(){
+			jQuery('#fb-share').click(function(){
+				sharePage("<?php echo $this->listing->bitly ?>")
+			});
 		})
 		
 		<?php 		
@@ -157,10 +156,18 @@ class listing extends \myReef\views\view{
 				
 					<!-- Social Share -->
 					<div class="widget text-center">
-					  <div class="fb-share-button" data-href="<?php echo $this->listing->bitly ?>" data-layout="button"></div>
-					  <a target="_BLANK" href="http://twitter.com/share?text=<?php echo urlencode("For sale on MyReef.Club, " . $this->listing->title) ?>&url=<?php echo urlencode($this->listing->bitly); ?>&hashtags=myreefclub,reefing,reefers"><button class="btn btn-info btn-tiny btn-twitter"><i class="fab fa-twitter-square"></i>Tweet</button></a>			  
+					  <!--FB Share-->
+					  <button id="fb-share" class="btn btn-info btn-tiny btn-facebook"><i class="fab fa-facebook-square"></i>Facebook</button>
+
+					  <!--Twitter Share -->
+					  <a target="_BLANK" href="http://twitter.com/share?text=<?php echo urlencode("For sale on MyReef.Club, " . $this->listing->title) ?>&url=<?php echo urlencode($this->listing->bitly); ?>&hashtags=myreefclub,reefing,reefers">
+						<button class="btn btn-info btn-tiny btn-twitter"><i class="fab fa-twitter-square"></i>Tweet</button>
+					  </a>			 
+					  
+					  <!--Link Share-->
 					  <button id="modalLink" class="btn btn-info btn-tiny"><i class="fa fa-file"></i>Copy Link</button>
 					  <input type="text" value="" id="hidden-copy-url">
+					  
 					</div>	
 					
 					<!-- Price -->

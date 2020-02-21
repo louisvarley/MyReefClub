@@ -561,7 +561,11 @@ button {
 }
 
 .btn-twitter{
-	background-color: #0084b4 !important
+	background-color: #0084b4 !important;
+}
+
+.btn-facebook{
+	background-color: #3b5998 !important;
 }
 
 #hidden-copy-url{
