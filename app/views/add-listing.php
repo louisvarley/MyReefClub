@@ -226,10 +226,10 @@ class addListing extends \myReef\views\view{
 							<!-- Text input-->
 							<div class="form-group">
 							  <label class="col-lg-12 control-label" for="name">Contact Details *</label>  
-							  <label class="col-lg-12 control-hint">How should potential buyers contact you?</label>
+							  <label class="col-lg-12 control-hint">How can logged in users contact you?</label>					  
 							  <label class="col-lg-12 control-hint">You could include an email, a mobile number, a link to your facebook profile, or a facebook group</label>
 							  <div class="col-lg-12">
-							  <input required="" id="textinput" name="contact" type="text" placeholder="Example: I'm on Essex Reef Group" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->contact : ""); ?>">
+							  <input required="" id="textinput" name="contact" type="text" placeholder="Example: Contact me via Essex Reef Group" class="form-control input-lg" value="<?php e($this->isEdit() ? $this->listing->contact : userEmail()); ?>">
 							  </div>
 							</div>							
 

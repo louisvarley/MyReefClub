@@ -738,6 +738,7 @@ ul.pagination .active a {
   color: #fff;
   padding: 8px 20px !important;
   display: inline-block;
+  margin-right:10px;
 }
 
 .add-button:hover, .add-button:active, .add-button:visited, .add-button:link {
@@ -2685,5 +2686,31 @@ article.single-post p {
 	width:100%;
 }
 
+.profile-image{
+	border-radius:255px;
+	height:40px;
+	width:40px;
+}
+
+.contact-seller{
+	margin-bottom:10px;
+}
+
+.contact-seller h2{
+	margin-bottom: 20px;
+	border-bottom: 1px solid #dedede;
+	padding-bottom: 10px;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.contact-seller img < div{
+	margin-left:10%;
+	margin-right:10%;
+}
+
+.contact-info{
+	margin-top:20px;
+}
 
 /*# sourceMappingURL=maps/style.css.map */

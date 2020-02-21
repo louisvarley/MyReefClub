@@ -30,7 +30,7 @@ class listing extends \myReef\views\view{
 		})
 		
 		jQuery( document ).ready(function(){
-			jQuery('#fb-share').click(function(){
+			jQuery('.fb-share').click(function(){
 				sharePage("<?php echo $this->listing->bitly ?>")
 			});
 		})
@@ -67,8 +67,8 @@ class listing extends \myReef\views\view{
         <input readonly="true" class="form-control input-lg" type="text" id="#modalLinkText" value="<?php echo $this->listing->bitly ?>">
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" id="modaLinkCopy" class="btn btn-primary">Copy Link</button>
+		<button class="btn btn-info btn-facebook fb-share"><i class="fab fa-facebook-square"></i> Facebook Share</button>
       </div>
     </div>
   </div>
@@ -157,8 +157,10 @@ class listing extends \myReef\views\view{
 					<!-- Social Share -->
 					<div class="widget text-center">
 					  <!--FB Share-->
-					  <button id="fb-share" class="btn btn-info btn-tiny btn-facebook"><i class="fab fa-facebook-square"></i>Facebook</button>
 
+					  <button class="btn btn-info btn-tiny btn-facebook fb-share"><i class="fab fa-facebook-square"></i>Facebook</button>
+					  
+					  
 					  <!--Twitter Share -->
 					  <a target="_BLANK" href="http://twitter.com/share?text=<?php echo urlencode("For sale on MyReef.Club, " . $this->listing->title) ?>&url=<?php echo urlencode($this->listing->bitly); ?>&hashtags=myreefclub,reefing,reefers">
 						<button class="btn btn-info btn-tiny btn-twitter"><i class="fab fa-twitter-square"></i>Tweet</button>
@@ -174,7 +176,52 @@ class listing extends \myReef\views\view{
 					<div class="widget price text-center">
 						<h4>Price</h4>
 						<p><?php e(price($this->listing->price)); ?></p>
-					</div>											
+					</div>	
+
+					<!-- Seller Contact -->
+					<div class="widget text-center">
+						
+						<div class="contact-seller">
+						<h2>Contact Seller</h2>
+						
+						<h3><?php e($this->listing->name); ?></h3>
+						<?php if(!empty($this->listing->profilePicture)){
+							?><div><img class="profile-image" src="<?php echo $this->listing->profilePicture; ?>"></div><?php
+						}?>
+							<div class="contact-info">
+							<?php if(!isLoggedIn()){ ?>
+																
+									 <a href="#" i class="nav-link login-button" href="#"><i class="fab fa-facebook-square"></i> Login to Contact Seller</a> 
+								
+							<?php }else{ 
+								
+								/* Email Provided, Make Link */
+								if (strpos($this->listing->contact, '@') !== false){
+									?>
+									<a href="mailto:<?php e($this->listing->contact)  ?>"><?php e($this->listing->contact) ?></a>
+									<?php
+									
+								/* Website Provided, Make Link */	
+								}elseif(strpos($this->listing->contact, 'http') !== false) { 
+								
+								?>
+								<a target="_BLANK" href="<?php e($this->listing->contact)?>"><?php e($this->listing->contact) ?></a>
+								<?php
+								
+								/* Just Display, Text */
+								}else{
+									?>
+									<?php e($this->listing->contact); ?>
+									<?php
+								}
+							
+							}
+							
+							?>
+							</div>
+						</div>
+					</div>				
+					
 					<div class="widget map">
 						<div class="map">
 							<div id="map">
@@ -183,31 +230,7 @@ class listing extends \myReef\views\view{
 						</div>
 					</div>
 
-					<!-- Seller Contact -->
-					<div class="widget text-center">
-						<p><button data-toggle="collapse" aria-expanded="false" data-target="#contact-seller" aria-controls="contact-seller" class="btn btn-primary">Contact Seller</button></p>
-						<div class="collapse" id="contact-seller">
-						<?php 
-						if (strpos($this->listing->contact, '@') !== false){
-							?>
-							<a href="mailto:<?php e($this->listing->contact)  ?>"><?php e($this->listing->contact) ?></a>
-							<?php
 							
-						}elseif(strpos($this->listing->contact, 'http') !== false) { 
-						
-						?>
-						<a target="_BLANK" href="<?php e($this->listing->contact)?>"><?php e($this->listing->contact) ?></a>
-						<?php
-						
-						}else{
-							?>
-							<?php e($this->listing->contact); ?>
-							<?php
-						}
-						
-						?>
-						</div>
-					</div>						
 					
 				</div>
 			</div>

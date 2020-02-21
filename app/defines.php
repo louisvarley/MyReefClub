@@ -19,6 +19,7 @@ define('_BITLY_TOKEN','7101635087a3fc1d3d977b34da94926f35dba436');
 define('_DEFAULT_TITLE','MyReef Club | Sales and Swap Listings');
 define('_DEFAULT_IMAGE',_IMAGES . 'default.jpg');
 define('_DEFAULT_DESCRIPTION','Simple reef listings which you can share with everyone anywhere');
+define('_DEFAULT_PROFILE_IMG',_IMAGES . 'default_profile.png');
 
 /* Add and Remove FAQ Entries Here */
 define('_FAQS',array(

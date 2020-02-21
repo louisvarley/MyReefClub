@@ -28,6 +28,12 @@ function userID(){
 	
 }
 
+function userPicture(){
+	
+	return \myReef\classes\user::getPicture();
+	
+}
+
 function logout(){
 	
 	unset($_COOKIE['fb_me']); 

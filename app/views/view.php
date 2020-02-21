@@ -122,6 +122,9 @@ class view{
 									<li class="nav-item">
 										<a href="#" i class="nav-link logout-button" href="#">Logout</a>
 									</li>
+									<li>
+										<img class="profile-image" src="<?php echo userPicture(); ?>">
+									</li>
 									 <?php } ?>
 									 
 								

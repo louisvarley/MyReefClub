@@ -28,6 +28,7 @@ class listing extends \myReef\models\model{
 	public $summary;
 	public $bitly;
 	public $contact;
+	public $profilePicture;
 	public $images = [];
 	
 	public $found = false;
@@ -51,6 +52,7 @@ class listing extends \myReef\models\model{
 		$this->summary  = (!empty($data->summary) ? $data->summary : "");		
 		$this->contact  = (!empty($data->contact) ? $data->contact : "");			
 		$this->user  = (!empty($data->user) ? $data->user : "");	
+		$this->profilePicture  = (!empty($data->profilePicture) ? $data->profilePicture : "");			
 		$this->email = (!empty($data->email) ? $data->email : "");
 		$this->bitly  = (!empty($data->bitly) ? $data->bitly : "");				
 		$this->price  = (!empty($data->price) ? $data->price : "");
@@ -81,7 +83,8 @@ class listing extends \myReef\models\model{
 	function save(){
 		
 		if(!isset($this->user) || empty($this->user)) $this->user = userID();
-		if(!isset($this->email) || empty($this->email)) $this->email = userEmail();		
+		if(!isset($this->email) || empty($this->email)) $this->email = userEmail();	
+		if(!isset($this->profilePicture) || empty($this->profilePicture)) $this->profilePicture = userPicture();				
 		if(!isset($this->bitly) || empty($this->bitly)) $this->bitly = generateBitly(baseURL() . $this->url);
 
 		if($this->user == userID()){

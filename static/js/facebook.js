@@ -10,7 +10,6 @@ jQuery( document ).ready(function() {
 	});
 	
 	login = function() {
-
 		if ( FB.getAuthResponse()  ) {
 			loadProfile();
 		}else{		
@@ -27,11 +26,10 @@ jQuery( document ).ready(function() {
 		
 		token = FB.getAccessToken();
 		
-		FB.api('/me', {fields: 'name,email'}, function(response) {
+		FB.api('/me', {access_token: token, fields: 'name,email,picture'}, function(response) {
 			console.log(response);
 			setCookie("fb_me",JSON.stringify(response));
 			document.location.reload();	
-			
 		});
 	}
 
@@ -47,19 +45,24 @@ jQuery( document ).ready(function() {
 	};
 	
 	sharePage = function(url = window.location.href){
+
 		FB.ui({
-			method: 'share_open_graph',
-		    app_id: '1078708442504913',			
-			display: 'popup',
-			action_type: 'og.posts',
-			  action_properties: JSON.stringify({
-				object:url,
-			  })
-		}, function(response){});
+		  method: 'share',
+		  href: url,
+		}, function(response){});		
+						
 				
-		
 	}
 
+	sendMessage = function(id, url = window.location.href){
+		FB.ui({
+		  app_id: '1078708442504913',
+		  method: 'send',
+		  to: id,
+		  link: url,
+		});
+	}
+	
 	/* Facebook Loads */
 	window.fbAsyncInit = function() {
 	  
