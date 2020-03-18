@@ -191,7 +191,7 @@ class listing extends \myReef\views\view{
 							<div class="contact-info">
 							<?php if(!isLoggedIn()){ ?>
 																
-									 <a href="#" i class="nav-link login-button" href="#"><i class="fab fa-facebook-square"></i> Login to Contact Seller</a> 
+									 <button class="nav-link login-button" href="#"><i class="fab fa-facebook-square"></i> Login to Contact Seller</button> 
 								
 							<?php }else{ 
 								
