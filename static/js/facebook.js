@@ -1,19 +1,18 @@
 jQuery( document ).ready(function() {
 
     /* Facebook Loads */
+	FB.init({
+	  appId: '1078708442504913',
+	  cookie: true,
+	  version: 'v2.2'
+	});
 
-		FB.init({
-		  appId: '1078708442504913',
-		  cookie: true,
-		  version: 'v2.2'
-		});
-
-		/* If cookie set, log in on each page load */
-		FB.getLoginStatus(function(response){	
-			if (document.cookie.includes("fb")) {
-				
-			}
-		})
+	/* If cookie set, log in on each page load */
+	FB.getLoginStatus(function(response){	
+		if (document.cookie.includes("fb")) {
+			
+		}
+	})
 
 	jQuery('.login-button').click(function(){
 		
@@ -59,24 +58,7 @@ jQuery( document ).ready(function() {
 		document.location.reload();   
 	};
 	
-	sharePage = function(url = window.location.href){
 
-		FB.ui({
-		  method: 'share',
-		  href: url,
-		}, function(response){});		
-						
-				
-	}
-
-	sendMessage = function(id, url = window.location.href){
-		FB.ui({
-		  app_id: '1078708442504913',
-		  method: 'send',
-		  to: id,
-		  link: url,
-		});
-	}
 
 	(function(d, s, id){
 		var js, fjs = d.getElementsByTagName(s)[0];
@@ -86,11 +68,27 @@ jQuery( document ).ready(function() {
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));		
 
-	
-		
-		
 			
 })	
+
+sharePage = function(url = window.location.href){
+
+	FB.ui({
+	  method: 'share',
+	  href: url,
+	}, function(response){});		
+					
+			
+}
+
+sendMessage = function(id, url = window.location.href){
+	FB.ui({
+	  app_id: '1078708442504913',
+	  method: 'send',
+	  to: id,
+	  link: url,
+	});
+}
 
 function setCookie(name,value,days) {
     var expires = "";
