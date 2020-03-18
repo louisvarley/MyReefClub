@@ -85,7 +85,7 @@ class listing extends \myReef\models\model{
 		if(!isset($this->user) || empty($this->user)) $this->user = userID();
 		if(!isset($this->email) || empty($this->email)) $this->email = userEmail();	
 		if(!isset($this->profilePicture) || empty($this->profilePicture)) $this->profilePicture = userPicture();				
-		if(!isset($this->bitly) || empty($this->bitly)) $this->bitly = generateBitly(baseURL() . $this->url);
+		if(!isset($this->bitly) || empty($this->bitly)) $this->bitly = generateBitlyv4(baseURL() . $this->url);
 
 		if($this->user == userID()){
 		

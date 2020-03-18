@@ -212,6 +212,35 @@ function generateBitly($url){
 	
 }
 
+function generateBitlyv4($url){
+	
+	$apiv4 = 'https://api-ssl.bitly.com/v4/bitlinks';
+
+	$data = array(
+		'long_url' => $url
+	);
+	$payload = json_encode($data);
+
+	$header = array(
+		'Authorization: Bearer ' . _BITLY_TOKEN,
+		'Content-Type: application/json',
+		'Content-Length: ' . strlen($payload)
+	);
+
+	$ch = curl_init($apiv4);
+	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+	curl_setopt($ch, CURLOPT_POSTFIELDS, $payload);
+	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+	curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
+	$result = curl_exec($ch);
+
+	$resultToJson = json_decode($result);
+
+	if (isset($resultToJson->link)) {
+		return $resultToJson->link;
+	}
+}
+
 function stringToColor($str) {
 	
   $code = dechex(crc32($str));
