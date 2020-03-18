@@ -1,5 +1,20 @@
 jQuery( document ).ready(function() {
 
+    /* Facebook Loads */
+
+		FB.init({
+		  appId: '1078708442504913',
+		  cookie: true,
+		  version: 'v2.2'
+		});
+
+		/* If cookie set, log in on each page load */
+		FB.getLoginStatus(function(response){	
+			if (document.cookie.includes("fb")) {
+				
+			}
+		})
+
 	jQuery('.login-button').click(function(){
 		
 		login();
@@ -62,23 +77,6 @@ jQuery( document ).ready(function() {
 		  link: url,
 		});
 	}
-	
-	/* Facebook Loads */
-	window.fbAsyncInit = function() {
-	  
-		FB.init({
-		  appId: '1078708442504913',
-		  cookie: true,
-		  version: 'v2.2'
-		});
-
-		/* If cookie set, log in on each page load */
-		FB.getLoginStatus(function(response){	
-			if (document.cookie.includes("fb")) {
-				
-			}
-		})
-	};
 
 	(function(d, s, id){
 		var js, fjs = d.getElementsByTagName(s)[0];
