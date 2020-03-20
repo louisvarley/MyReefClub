@@ -323,6 +323,7 @@ textarea.form-control {
 
 button {
   cursor: pointer;
+  border: 0px;
 }
 
 

@@ -154,7 +154,7 @@ class addListing extends \myReef\views\view{
 						<div class="form-group">
 							<label class="col-lg-12 control-label" for="title">You must be logged in to create your listing</label>  
 							<div class="col-lg-12">
-								 <a href="#" i class="nav-link login-button" href="#"><i class="fab fa-facebook-square"></i> Login with Facebook</a>
+								 <button class="nav-link login-button"><i class="fab fa-facebook-square"></i> Login with Facebook</button>
 							</div>
 						</div>
 					</div>

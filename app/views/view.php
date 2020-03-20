@@ -114,13 +114,13 @@ class view{
 									
 									<?php if(!isLoggedIn()){ ?>
 									<li class="nav-item">									
-										 <a href="#" i class="nav-link login-button" href="#"><i class="fab fa-facebook-square"></i> Login with Facebook</a> 
+										 <button class="nav-link login-button"><i class="fab fa-facebook-square"></i> Login with Facebook</button>
 									</li>
 									<?php } ?>
 									
 									<?php if(isLoggedIn()){ ?> 
 									<li class="nav-item">
-										<a href="#" i class="nav-link logout-button" href="#">Logout</a>
+										<button class="nav-link logout-button">Logout</button>
 									</li>
 									<li>
 										<img class="profile-image" src="<?php echo userPicture(); ?>">

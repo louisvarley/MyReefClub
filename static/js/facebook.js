@@ -1,4 +1,5 @@
-jQuery( document ).ready(function() {
+window.fbAsyncInit = function() {
+
 
     /* Facebook Loads */
 	FB.init({
@@ -6,6 +7,7 @@ jQuery( document ).ready(function() {
 	  cookie: true,
 	  version: 'v2.2'
 	});
+
 
 	/* If cookie set, log in on each page load */
 	FB.getLoginStatus(function(response){	
@@ -16,7 +18,14 @@ jQuery( document ).ready(function() {
 
 	jQuery('.login-button').click(function(){
 		
-		login();
+		try {
+		 login();
+		}
+		catch(err) {
+		  alert("Login Error: " + err);
+		} 
+		
+		
 	});
 	
 	jQuery('.logout-button').click(function(){
@@ -58,8 +67,6 @@ jQuery( document ).ready(function() {
 		document.location.reload();   
 	};
 	
-
-
 	(function(d, s, id){
 		var js, fjs = d.getElementsByTagName(s)[0];
 		if (d.getElementById(id)) {return;}
@@ -68,8 +75,9 @@ jQuery( document ).ready(function() {
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));		
 
-			
-})	
+};
+	
+
 
 sharePage = function(url = window.location.href){
 
